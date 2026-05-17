@@ -273,24 +273,20 @@ section { padding-block: var(--section-padding); }
 }
 
 /* ═══════════════════════════════════════
-   ZONE 1 — STICKY HEADER / NAV
+   ZONE 1 — STICKY HEADER / NAV (always white)
    ═══════════════════════════════════════ */
 .z1-header {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 100;
-  background: transparent;
-  transition: background 0.3s var(--ease-out),
-              border-color 0.3s var(--ease-out),
-              box-shadow 0.3s var(--ease-out);
-  border-bottom: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s var(--ease-out);
 }
 
 .z1-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom-color: var(--border);
   box-shadow: var(--shadow-sm);
 }
 
@@ -310,14 +306,8 @@ section { padding-block: var(--section-padding); }
   line-height: 1;
 }
 .z1-logo img {
-  height: 44px;
+  height: 62px;
   width: auto;
-  /* Drop-shadow gives the white wordmark a visible edge over the hero */
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.55));
-  transition: filter 0.3s var(--ease-out);
-}
-.z1-header.is-scrolled .z1-logo img {
-  filter: none;
 }
 
 .z1-nav { display: flex; }
@@ -335,11 +325,10 @@ section { padding-block: var(--section-padding); }
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.55);
+  color: var(--ink);
   position: relative;
   padding-block: 0.25rem;
-  transition: color 0.25s var(--ease-out), text-shadow 0.25s var(--ease-out);
+  transition: color 0.25s var(--ease-out);
 }
 .z1-nav a::after {
   content: "";
@@ -352,33 +341,19 @@ section { padding-block: var(--section-padding); }
   transition: transform 0.3s var(--ease-out);
   border-radius: 999px;
 }
-.z1-header.is-scrolled .z1-nav a {
-  color: var(--ink);
-  text-shadow: none;
-}
-.z1-nav a:hover { color: var(--green); }
+.z1-nav a:hover { color: var(--green-deep); }
 .z1-nav a:hover::after { transform: scaleX(1); }
 
 .z1-nav .nav-cta {
   padding: 0.5rem 1rem;
-  border: 1.5px solid #fff;
-  color: #fff;
+  border: 1.5px solid var(--green-deep);
+  color: var(--green-deep);
   border-radius: 999px;
-  text-shadow: none;
-  background: rgba(0,0,0,0.18);
+  background: transparent;
+  transition: background 0.25s var(--ease-out), color 0.25s var(--ease-out);
 }
 .z1-nav .nav-cta::after { display: none; }
 .z1-nav .nav-cta:hover {
-  background: var(--green);
-  border-color: var(--green);
-  color: #fff;
-}
-.z1-header.is-scrolled .z1-nav .nav-cta {
-  border-color: var(--green-deep);
-  color: var(--green-deep);
-  background: transparent;
-}
-.z1-header.is-scrolled .z1-nav .nav-cta:hover {
   background: var(--green-deep);
   color: #fff;
 }
@@ -395,38 +370,42 @@ section { padding-block: var(--section-padding); }
   display: block;
   width: 26px;
   height: 2px;
-  background: #fff;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
-  transition: transform 0.3s var(--ease-out), opacity 0.2s var(--ease-out), background 0.25s var(--ease-out);
+  background: var(--ink);
+  transition: transform 0.3s var(--ease-out), opacity 0.2s var(--ease-out);
   border-radius: 999px;
 }
-.z1-header.is-scrolled .z1-mobile-toggle span { background: var(--ink); box-shadow: none; }
 .z1-header.is-nav-open .z1-mobile-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .z1-header.is-nav-open .z1-mobile-toggle span:nth-child(2) { opacity: 0; }
 .z1-header.is-nav-open .z1-mobile-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 820px) {
   .z1-mobile-toggle { display: flex; }
+  .z1-logo img { height: 52px; }
   .z1-nav {
     position: fixed;
-    inset: 0;
-    background: var(--bg);
+    top: 0;
+    left: 0;
+    /* Explicit viewport sizing — .z1-header's backdrop-filter makes the header
+       the containing block for fixed-positioned descendants, so inset:0 would
+       collapse the nav to header height. Viewport units bypass that. */
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transform: translateY(-100%);
     transition: transform 0.4s var(--ease-out);
-    z-index: -1;
+    /* Below header (z 100) so the logo + hamburger stay visible on top
+       when the menu is open, but above body content. */
+    z-index: 99;
+    overflow: hidden;
   }
   .z1-nav ul { flex-direction: column; gap: 2.25rem; }
-  .z1-nav a { font-size: var(--text-lg); color: var(--ink); text-shadow: none; }
-  .z1-nav .nav-cta { color: var(--green-deep); border-color: var(--green-deep); background: transparent; }
-  .z1-header.is-nav-open {
-    background: rgba(255,255,255,0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-  .z1-header.is-nav-open .z1-logo img { filter: none; }
+  .z1-nav a { font-size: var(--text-lg); }
   .z1-header.is-nav-open .z1-nav { transform: translateY(0); }
 }
 

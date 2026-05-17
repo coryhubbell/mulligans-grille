@@ -5,6 +5,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1C6F36">
 
+<!-- Dev cache killswitch: unregister any prior service worker + purge caches
+     on localhost so iterations always hit disk. Runs before stylesheet loads.
+     If anything was actually purged, reloads once to bypass stale cached CSS/JS. -->
+<script>
+  (function () {
+    var h = location.hostname;
+    if (h !== 'localhost' && h !== '127.0.0.1' && !h.endsWith('.local')) return;
+    if (sessionStorage.getItem('mg_cache_purged') === '1') return;
+    var hasSW = 'serviceWorker' in navigator;
+    var hasCaches = window.caches && caches.keys;
+    if (!hasSW && !hasCaches) {
+      sessionStorage.setItem('mg_cache_purged', '1');
+      return;
+    }
+    Promise.all([
+      hasSW
+        ? navigator.serviceWorker.getRegistrations().then(function (rs) {
+            return Promise.all(rs.map(function (r) { return r.unregister(); }))
+              .then(function () { return rs.length; });
+          })
+        : Promise.resolve(0),
+      hasCaches
+        ? caches.keys().then(function (keys) {
+            return Promise.all(keys.map(function (k) { return caches.delete(k); }))
+              .then(function () { return keys.length; });
+          })
+        : Promise.resolve(0)
+    ]).then(function (counts) {
+      sessionStorage.setItem('mg_cache_purged', '1');
+      if (counts[0] + counts[1] > 0) location.reload();
+    }).catch(function () {
+      sessionStorage.setItem('mg_cache_purged', '1');
+    });
+  })();
+</script>
+
 <title>Mulligan's Grille — Wings, Burgers & Cold Beer in Port Orange, FL</title>
 <meta name="description" content="Mulligan's Grille is Port Orange's golf-and-grill — scratch-made sauces, hand-cut steaks, the Hole-In-One Burger, the Courtyard and Bar, live music. Under new ownership: Tracy & Bobby Parks. 3830 S Nova Rd.">
 <meta name="keywords" content="Mulligan's Grille, Port Orange restaurant, sports bar Port Orange, wings Port Orange, burgers Port Orange, Nova Road restaurant, Daytona Beach restaurant, live music Port Orange">
@@ -40,8 +76,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Preload hero -->
-<link rel="preload" as="image" href="/assets/images/hero-neon-sign.png" fetchpriority="high">
+<!-- Preload hero poster (paints instantly while the video loads) -->
+<link rel="preload" as="image" href="/assets/images/hero-poster.jpg" fetchpriority="high">
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="/assets/css/shared.css">
@@ -124,14 +160,32 @@
 <section class="hero" aria-labelledby="hero-heading">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow">Port Orange · Under new ownership 2026</p>
-    <h1 id="hero-heading" class="script">Take a Mulligan.</h1>
-    <p class="hero-tagline">Wings · Burgers · Cold Beer</p>
-    <p class="hero-sub">A neighborhood golf-and-grill on Nova Road. Hand-cut steaks, scratch-made sauces, the Hole-In-One Burger, and the Courtyard and Bar — a do-over whenever you need one.</p>
-    <div class="hero-actions">
-      <a href="#menu" class="btn btn-on-dark">View the Menu</a>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=3830+S+Nova+Rd+Ste+B1+Port+Orange+FL+32127" target="_blank" rel="noopener" class="btn btn-ghost-on-dark">Get Directions</a>
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Port Orange · Under new ownership 2026</p>
+      <h1 id="hero-heading" class="script">Take a Mulligan.</h1>
+      <p class="hero-tagline">Wings · Burgers · Cold Beer</p>
+      <p class="hero-sub">A neighborhood golf-and-grill on Nova Road. Hand-cut steaks, scratch-made sauces, the Hole-In-One Burger, and the Courtyard and Bar — a do-over whenever you need one.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-on-dark">View the Menu</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=3830+S+Nova+Rd+Ste+B1+Port+Orange+FL+32127" target="_blank" rel="noopener" class="btn btn-ghost-on-dark">Get Directions</a>
+      </div>
     </div>
+
+    <figure class="hero-video">
+      <div class="hero-video-frame">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="/assets/images/hero-poster.jpg"
+          aria-label="Mulligan's Grille grand reopening video">
+          <source src="/assets/video/hero-reopening.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption class="hero-video-caption">Grand reopening · March 2026</figcaption>
+    </figure>
   </div>
 </section>
 
