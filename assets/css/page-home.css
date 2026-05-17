@@ -227,6 +227,7 @@
 .z3-declare {
   background: var(--bg);
   padding-block: clamp(2.5rem, 5vw, 3.5rem);
+  padding-block-end: clamp(2rem, 5vw, 3.5rem);
   border-bottom: 1px solid var(--border);
 }
 
@@ -267,6 +268,7 @@
 .story {
   background: var(--bg);
   position: relative;
+  padding-block: clamp(2rem, 5vw, 3.5rem);
 }
 
 .story-inner {
@@ -276,21 +278,31 @@
   text-align: center;
 }
 
+.story-mascot {
+  display: block;
+  width: clamp(72px, 9vw, 112px);
+  height: auto;
+  margin: 0 auto 1rem;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 .story h2.script {
-  font-size: var(--text-script-xl);
-  line-height: 0.95;
+  font-size: clamp(1.75rem, 5.5vw, 4.5rem);
+  line-height: 1.05;
   color: var(--green-deep);
   margin-bottom: 2rem;
   text-transform: none;
+  white-space: nowrap;
 }
 
 .story p {
   font-family: var(--font-body);
-  font-size: var(--text-lg);
+  font-size: var(--text-base);
   line-height: 1.7;
   color: var(--text-muted);
-  margin-bottom: 1.25rem;
-  text-align: left;
+  margin: 0 0 1.25rem;
+  text-align: center;
 }
 
 .story p strong { color: var(--ink); font-weight: 600; }
@@ -306,6 +318,7 @@
 .about {
   background: var(--bg-elevated);
   border-block: 1px solid var(--border);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
 }
 
 .about-grid {
@@ -389,6 +402,7 @@
 .menu {
   background: var(--bg);
   position: relative;
+  padding-block: clamp(2rem, 5vw, 3.5rem);
 }
 
 .menu-head {
@@ -397,6 +411,15 @@
   padding-inline: var(--gutter);
   text-align: center;
   margin-bottom: 3.5rem;
+}
+
+.menu-mascot {
+  display: block;
+  width: clamp(72px, 9vw, 112px);
+  height: auto;
+  margin: 0 auto 0.75rem;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .menu-head h2 {
@@ -555,6 +578,7 @@
 .location {
   background: var(--bg-elevated);
   border-top: 1px solid var(--border);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
 }
 
 .location-grid {
@@ -686,7 +710,7 @@
 .vip {
   background: var(--bg-elevated);
   border-block: 1px solid var(--border);
-  padding-block: clamp(4rem, 8vw, 6rem);
+  padding-block: clamp(2rem, 5vw, 3.5rem);
   position: relative;
   overflow: hidden;
 }
@@ -852,6 +876,7 @@
   color: var(--text-on-dark);
   position: relative;
   overflow: hidden;
+  padding-block: clamp(2rem, 5vw, 3.5rem);
 }
 
 .events::before {
