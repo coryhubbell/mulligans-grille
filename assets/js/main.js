@@ -97,11 +97,32 @@
     });
   }
 
+  function initScrollTop() {
+    var btn = document.querySelector('.scroll-top');
+    var footer = document.querySelector('footer');
+    if (!btn || !footer) return;
+    btn.hidden = false;
+
+    function onScroll() {
+      var footerTop = footer.getBoundingClientRect().top;
+      if (footerTop <= window.innerHeight) btn.classList.add('is-visible');
+      else btn.classList.remove('is-visible');
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
   function init() {
     initMobileNav();
     initScrollHeader();
     highlightToday();
     initReveals();
+    initScrollTop();
     updateFooterYear();
     registerServiceWorker();
   }
