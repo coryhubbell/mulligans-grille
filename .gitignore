@@ -28,3 +28,6 @@ node_modules/
 # Build output (if any)
 dist/
 .cache/
+
+# Raw originals — copied into assets/images/ and assets/docs/ under clean names
+assets from previous businness/

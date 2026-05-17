@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#1a1410">
+<meta name="theme-color" content="#1C6F36">
 
 <title>Mulligan's Grille — Wings, Burgers & Cold Beer in Port Orange, FL</title>
-<meta name="description" content="Mulligan's Grille is Port Orange's casual American sports grill. Scratch-made soups and sauces, hand-cut steaks, award-winning wings and burgers. 3830 S Nova Rd. Open 7 days.">
-<meta name="keywords" content="Mulligan's Grille, Port Orange restaurant, sports bar Port Orange, wings Port Orange, burgers Port Orange, Nova Road restaurant">
+<meta name="description" content="Mulligan's Grille is Port Orange's golf-and-grill — scratch-made sauces, hand-cut steaks, the Hole-In-One Burger, the Courtyard and Bar, live music. Under new ownership: Tracy & Bobby Parks. 3830 S Nova Rd.">
+<meta name="keywords" content="Mulligan's Grille, Port Orange restaurant, sports bar Port Orange, wings Port Orange, burgers Port Orange, Nova Road restaurant, Daytona Beach restaurant, live music Port Orange">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://mulligans-grille.com/">
 
@@ -15,7 +15,7 @@
 <meta property="og:type" content="restaurant.restaurant">
 <meta property="og:site_name" content="Mulligan's Grille">
 <meta property="og:title" content="Mulligan's Grille — Port Orange, FL">
-<meta property="og:description" content="Wings, burgers, cold beer, good people. Port Orange's casual American sports grill.">
+<meta property="og:description" content="Wings, burgers, cold beer — and a do-over whenever you need one. Port Orange's golf-themed grill, under new ownership.">
 <meta property="og:url" content="https://mulligans-grille.com/">
 <meta property="og:image" content="https://mulligans-grille.com/assets/images/og-default.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mulligan's Grille — Port Orange, FL">
-<meta name="twitter:description" content="Wings, burgers, cold beer, good people. Open 7 days in Port Orange.">
+<meta name="twitter:description" content="Wings, burgers, cold beer — and a do-over whenever you need one. Open 7 days in Port Orange.">
 <meta name="twitter:image" content="https://mulligans-grille.com/assets/images/og-default.jpg">
 
 <!-- Favicons + manifest -->
@@ -38,7 +38,10 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter+Tight:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Preload hero -->
+<link rel="preload" as="image" href="/assets/images/hero-neon-sign.png" fetchpriority="high">
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="/assets/css/shared.css">
@@ -88,7 +91,7 @@
     "https://www.instagram.com/mulligansgrille/"
   ],
   "acceptsReservations": "False",
-  "menu": "https://mulligans-grille.com/menu.pdf"
+  "menu": "https://mulligans-grille.com/assets/images/menu-page-1.png"
 }
 </script>
 </head>
@@ -97,13 +100,15 @@
 <!-- ═══ Z1: Sticky Nav ═══════════════════════════════════════ -->
 <header class="z1-header" id="site-header">
   <div class="z1-inner">
-    <a href="#top" class="z1-logo" aria-label="Mulligan's Grille home">Mulligan<span class="amp">&rsquo;</span>s Grille</a>
+    <a href="#top" class="z1-logo" aria-label="Mulligan's Grille home">
+      <img src="/assets/images/logo-wordmark.png" alt="Mulligan's Grille">
+    </a>
     <button class="z1-mobile-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
     <nav id="primary-nav" class="z1-nav" aria-label="Primary">
       <ul>
-        <li><a href="#about">About</a></li>
+        <li><a href="#story">Our Story</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#visit">Visit</a></li>
         <li><a href="#events">Events</a></li>
@@ -115,15 +120,35 @@
 
 <main id="top">
 
-<!-- ═══ Z2: Hero ═══════════════════════════════════════════════ -->
+<!-- ═══ Hero ════════════════════════════════════════════════════ -->
 <section class="hero" aria-labelledby="hero-heading">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow">Port Orange · Since the neighborhood needed one</p>
-    <h1 id="hero-heading">Wings, burgers,<br>cold beer,<br><span class="accent">good people.</span></h1>
-    <p class="hero-sub">Mulligan&rsquo;s Grille is Port Orange&rsquo;s casual sports grill — scratch-made soups and sauces, hand-cut steaks, and the kind of patio you settle into.</p>
+    <p class="hero-eyebrow">Port Orange · Under new ownership 2026</p>
+    <h1 id="hero-heading" class="script">Take a Mulligan.</h1>
+    <p class="hero-tagline">Wings · Burgers · Cold Beer</p>
+    <p class="hero-sub">A neighborhood golf-and-grill on Nova Road. Hand-cut steaks, scratch-made sauces, the Hole-In-One Burger, and the Courtyard and Bar — a do-over whenever you need one.</p>
     <div class="hero-actions">
-      <a href="#menu" class="btn btn-primary">View the Menu</a>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=3830+S+Nova+Rd+Ste+B1+Port+Orange+FL+32127" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+      <a href="#menu" class="btn btn-on-dark">View the Menu</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=3830+S+Nova+Rd+Ste+B1+Port+Orange+FL+32127" target="_blank" rel="noopener" class="btn btn-ghost-on-dark">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Story — How Did This Mulligan Thing Start? ═════════════ -->
+<section class="story" id="story" aria-labelledby="story-heading">
+  <div class="story-inner">
+    <p class="eyebrow">Our Story</p>
+    <h2 id="story-heading" class="script">How did this Mulligan thing start?</h2>
+
+    <p>You might think it started in Ireland — it&rsquo;s an Irish name, after all. Nope. The mulligan started on a golf course, the do-over you take when the first shot didn&rsquo;t go your way.</p>
+
+    <p>One story: a Canadian golfer named <strong>David Mulligan</strong> at the Country Club of Montreal in the 1920s — jumpy on the first tee, hit a poor shot, re-teed, called the second one a &ldquo;correction shot.&rdquo; The other story: <strong>John &ldquo;Buddy&rdquo; Mulligan</strong>, a locker-room attendant at Essex Fells Country Club in New Jersey in the 1930s, who&rsquo;d play after his shift and figured he&rsquo;d earned an extra shot. The members started doing it too, and the name stuck.</p>
+
+    <p>That&rsquo;s the spirit of this place. Pull up a chair, take your second shot at a good night, and order the burger.</p>
+
+    <div class="story-cta">
+      <a href="/assets/docs/mulligan-history.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Read the full story (PDF)</a>
     </div>
   </div>
 </section>
@@ -134,10 +159,13 @@
     <div>
       <p class="eyebrow">About</p>
       <h2 id="about-heading">A neighborhood grill, the way it should be.</h2>
+      <span class="about-new-owners" aria-label="Under new ownership">
+        New owners: Tracy &amp; Bobby Parks
+      </span>
     </div>
     <div class="about-body reveal">
-      <p>Mulligan&rsquo;s has been a Port Orange fixture for years — the kind of place where the regulars have a seat and the first-timers leave like regulars. We keep it simple: amazing wings made the way you like them, award-winning burgers, hand-cut steaks, and Reubens, Phillys, and buffalo chicken wraps that come out the way you remember them.</p>
-      <p>Our <strong>soups, sauces, salads, dressings, and desserts are made from scratch</strong> in the kitchen. Pull up a stool at the bar, grab a booth with the family, or settle onto the patio — there&rsquo;s room for whatever kind of night you&rsquo;re having.</p>
+      <p>Mulligan&rsquo;s has been a Port Orange fixture for years — the kind of place where the regulars have a seat and the first-timers leave like regulars. We keep it simple: amazing wings made the way you like them, award-winning burgers, hand-cut steaks, and the Hole-In-One Burger that has its own fan club.</p>
+      <p>Our <strong>sauces, dressings, and signature dishes are made from scratch</strong> in the kitchen. Pull up a stool at the bar, grab a booth with the family, or settle into the <strong>Courtyard and Bar</strong> — there&rsquo;s room for whatever kind of night you&rsquo;re having.</p>
     </div>
   </div>
 
@@ -148,63 +176,234 @@
     </div>
     <div class="about-stat">
       <div class="about-stat-headline">Scratch kitchen</div>
-      <div class="about-stat-sub">Soups · Sauces · Dressings</div>
+      <div class="about-stat-sub">Sauces · Dressings · Signatures</div>
     </div>
     <div class="about-stat">
-      <div class="about-stat-headline">Family + dog friendly</div>
-      <div class="about-stat-sub">The patio welcomes both</div>
+      <div class="about-stat-headline">Family + Bike Week ready</div>
+      <div class="about-stat-sub">Patio &amp; Courtyard</div>
     </div>
   </div>
 </section>
 
-<!-- ═══ Menu Highlights ════════════════════════════════════════ -->
+<!-- ═══ Menu — real items, real prices ═════════════════════════ -->
 <section class="menu" id="menu" aria-labelledby="menu-heading">
   <div class="menu-head reveal">
     <p class="eyebrow">What&rsquo;s good</p>
-    <h2 id="menu-heading">A menu built around what people actually order.</h2>
-    <p>Categories below are a taste. Full menu and daily specials at the table.</p>
+    <h2 id="menu-heading"><span class="script">A menu</span> built around what people actually order.</h2>
+    <p>Sample below. Daily specials and the soup-of-the-day at the table.</p>
   </div>
 
   <div class="menu-grid">
+
+    <!-- 1. Partee Starters -->
     <article class="menu-card reveal">
-      <div class="menu-card-num">01</div>
-      <h3>Wings</h3>
-      <p>Made the way you like them — plain, tossed, sauced, dry-rubbed. Mulligan&rsquo;s Secret Recipe, garlic parmesan, mild, hot, and the rest of the lineup. Flats-only or drums-only available.</p>
+      <div class="menu-card-eyebrow">01</div>
+      <h3>Partee Starters</h3>
+      <ul class="menu-items">
+        <li class="menu-item">
+          <span class="menu-item-name">Goat Cheese Golf Balls</span>
+          <span class="menu-item-price">16</span>
+          <span class="menu-item-desc">Crisp golden goat cheese, fresh strawberries, aged balsamic reduction.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Buttermilk Chicken Tenders</span>
+          <span class="menu-item-price">14</span>
+          <span class="menu-item-desc">Hand-breaded and fried, seasoned fries and your choice of sauce.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Steak Tip Bites</span>
+          <span class="menu-item-price">16</span>
+          <span class="menu-item-desc">Delicious beef bites, grilled to order.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Buffalo Shrimp</span>
+          <span class="menu-item-price">16</span>
+          <span class="menu-item-desc">Creamy house blend, warm tortilla chips, fresh jalape&ntilde;os.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Loaded Grille Fries</span>
+          <span class="menu-item-price">16</span>
+          <span class="menu-item-desc">Melted cheddar, vine-ripe tomatoes, scallions, finished with signature sauce.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Buffalo Chicken Dip</span>
+          <span class="menu-item-price">16</span>
+          <span class="menu-item-desc">Creamy house blend, warm tortilla chips, fresh jalape&ntilde;os.</span>
+        </li>
+      </ul>
     </article>
 
+    <!-- 2. Handheld Entrees -->
     <article class="menu-card reveal">
-      <div class="menu-card-num">02</div>
-      <h3>Burgers &amp; Sandwiches</h3>
-      <p>Award-winning burgers off the grill. Reubens, Cubans, French dips, Philly cheesesteaks, buffalo chicken wraps. Served with house-made chips; swap to fries, tots, sweet potato fries, or onion rings.</p>
+      <div class="menu-card-eyebrow">02</div>
+      <h3>Handheld Entrees</h3>
+      <p class="menu-card-served">Served with choice of side.</p>
+      <ul class="menu-items">
+        <li class="menu-item">
+          <span class="menu-item-name">Grilled Mahi Sandwich</span>
+          <span class="menu-item-price">19</span>
+          <span class="menu-item-desc">6 oz filet, toasted brioche, lettuce, tomato, citrus a&iuml;oli.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">The Classic Burger</span>
+          <span class="menu-item-price">16</span>
+          <span class="menu-item-desc">7 oz grilled beef, brioche bun, lettuce, tomato, onion, pickle.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">The Hole-In-One Burger</span>
+          <span class="menu-item-price">18</span>
+          <span class="menu-item-desc">7 oz grilled beef, house slaw, pimento cheese, signature sauce.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Buttermilk Fried Chicken Sandwich</span>
+          <span class="menu-item-price">16</span>
+          <span class="menu-item-desc">Golden fried breast, brioche bun, lettuce, pickle, blackened lemon mayo.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Steak &amp; Cheese Sandwich</span>
+          <span class="menu-item-price">19</span>
+          <span class="menu-item-desc">Grilled steak, melted provolone, saut&eacute;ed onions, mushrooms, house mulligan sauce on a brioche bun.</span>
+        </li>
+      </ul>
     </article>
 
+    <!-- 3. Club ✕ Wings -->
     <article class="menu-card reveal">
-      <div class="menu-card-num">03</div>
-      <h3>Hand-Cut Steaks</h3>
-      <p>Sirloin, ribeye, and the occasional NY strip special — cut in-house and grilled to order. Ask about tonight&rsquo;s steak special.</p>
+      <div class="menu-card-eyebrow">03</div>
+      <h3>Club <span class="x">✕</span> Wings</h3>
+      <p class="menu-card-served">Fried or grilled. Served with celery and ranch or bleu cheese.</p>
+      <ul class="menu-items">
+        <li class="menu-item">
+          <span class="menu-item-name">9 wings &middot; celery</span>
+          <span class="menu-item-price">15</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">9 wings &middot; fries or onion rings</span>
+          <span class="menu-item-price">18</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">18 wings &middot; celery</span>
+          <span class="menu-item-price">26</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">18 wings &middot; fries or onion rings</span>
+          <span class="menu-item-price">31</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">36 wings &middot; celery</span>
+          <span class="menu-item-price">52</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">36 wings &middot; fries or onion rings</span>
+          <span class="menu-item-price">60</span>
+        </li>
+      </ul>
+      <p class="menu-card-note"><strong>Sauces:</strong> Buffalo, BBQ, Garlic Parmesan, Honey BBQ, Teriyaki, Mulligan&rsquo;s Special Sauce.</p>
     </article>
 
+    <!-- 4. Main Entrees -->
     <article class="menu-card reveal">
-      <div class="menu-card-num">04</div>
-      <h3>Seafood</h3>
-      <p>Hand-dipped fish &amp; chips, fried shrimp, and a Mahi Reuben that has its own fan club. Daily fresh catch when available.</p>
+      <div class="menu-card-eyebrow">04</div>
+      <h3>Main Entrees</h3>
+      <p class="menu-card-served">Served with choice of side.</p>
+      <ul class="menu-items">
+        <li class="menu-item">
+          <span class="menu-item-name">Steak Tip Dinner</span>
+          <span class="menu-item-price">23</span>
+          <span class="menu-item-desc">Juicy grilled steak tips, saut&eacute;ed onions &amp; mushrooms.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Southern Fried Chicken</span>
+          <span class="menu-item-price">22</span>
+          <span class="menu-item-desc">Fried chicken breast, parmesan grits, coleslaw, buttered corn, brown gravy.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Shrimp &amp; Grits</span>
+          <span class="menu-item-price">24</span>
+          <span class="menu-item-desc">Parmesan grits, blackened shrimp, rich &eacute;touff&eacute;e, vinaigrette.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Blackened Honey Salmon</span>
+          <span class="menu-item-price">28</span>
+          <span class="menu-item-desc">Crisp 7 oz salmon, honey glaze, rice, seasonal vegetables.</span>
+        </li>
+      </ul>
     </article>
 
+    <!-- 5. In the Ruff (Salads) -->
     <article class="menu-card reveal">
-      <div class="menu-card-num">05</div>
-      <h3>Apps &amp; Shareables</h3>
-      <p>Loaded tots and loaded fries, jalape&ntilde;o poppers, fried mushrooms, hot wings, lobster roll, beer cheese soup, French onion soup. Or do a Pick-3 combo and try a little of everything.</p>
+      <div class="menu-card-eyebrow">05</div>
+      <h3>In the Ruff</h3>
+      <p class="menu-card-served">Salads. Add grilled chicken +6, shrimp +8, salmon +9.</p>
+      <ul class="menu-items">
+        <li class="menu-item">
+          <span class="menu-item-name">House Salad</span>
+          <span class="menu-item-price">10</span>
+          <span class="menu-item-desc">Mixed greens, tomato, cucumber, red onion, choice of dressing.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Cesar Salad</span>
+          <span class="menu-item-price">12</span>
+          <span class="menu-item-desc">Crisp romaine, parmesan, herb croutons, classic Cesar dressing.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Steak Salad</span>
+          <span class="menu-item-price">18</span>
+          <span class="menu-item-desc">Grilled tips, saut&eacute;ed onions &amp; mushrooms, romaine.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Buffalo Chicken Salad</span>
+          <span class="menu-item-price">18</span>
+          <span class="menu-item-desc">Crispy chicken in buffalo, romaine, blue cheese, tomato, scallions, cucumber.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Peach and Pecan Salad</span>
+          <span class="menu-item-price">17</span>
+          <span class="menu-item-desc">Mixed greens, candied pecans, fresh peaches, tomato, pickled red onion.</span>
+        </li>
+      </ul>
+      <p class="menu-card-note"><strong>Dressings:</strong> Ranch, French, Bleu Cheese, Thousand Island, Vinaigrette.</p>
     </article>
 
+    <!-- 6. Sides & Desserts -->
     <article class="menu-card reveal">
-      <div class="menu-card-num">06</div>
-      <h3>Salads &amp; Wraps</h3>
-      <p>Garden, chef, taco salad in a fried tortilla shell, buffalo chicken wrap, steak quesadilla. Grilled, blackened, or fried chicken on any salad.</p>
+      <div class="menu-card-eyebrow">06</div>
+      <h3>Sides &amp; Desserts</h3>
+      <ul class="menu-items">
+        <li class="menu-item">
+          <span class="menu-item-name">White rice · French fries · Sweet potato fries</span>
+          <span class="menu-item-price">7</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Homemade coleslaw · Seasonal vegetables · Parmesan grits</span>
+          <span class="menu-item-price">7</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Onion rings</span>
+          <span class="menu-item-price">9</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Soup of the day</span>
+          <span class="menu-item-price">7</span>
+          <span class="menu-item-desc">Ask your server for today&rsquo;s fresh selection.</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Key Lime Pie · Peanut Butter Chocolate</span>
+          <span class="menu-item-price">9</span>
+        </li>
+        <li class="menu-item">
+          <span class="menu-item-name">Dessert of the Month</span>
+          <span class="menu-item-price">9</span>
+        </li>
+      </ul>
+      <p class="menu-card-note">Kid&rsquo;s coloring menu available on request.</p>
     </article>
+
   </div>
 
   <div class="menu-cta reveal">
-    <a href="/menu.pdf" class="btn btn-ghost" target="_blank" rel="noopener">View Full Menu (PDF)</a>
+    <a href="/assets/images/menu-page-1.png" class="btn btn-ghost" target="_blank" rel="noopener">View the Full Menu</a>
+    <span class="menu-cta-note">Prices subject to change. Pay cash and save today.</span>
   </div>
 </section>
 
@@ -219,6 +418,7 @@
         <strong>Mulligan&rsquo;s Grille</strong>
         3830 S Nova Rd, Ste B1<br>
         Port Orange, FL 32127
+        <span class="courtyard">Bar + dining room + the Courtyard and Bar out back.</span>
       </address>
 
       <a href="tel:+13867883268" class="location-phone">(386) 788-3268</a>
@@ -259,39 +459,43 @@
 <!-- ═══ Events ═════════════════════════════════════════════════ -->
 <section class="events" id="events" aria-labelledby="events-heading">
   <div class="events-head reveal">
-    <p class="eyebrow">At the grill</p>
-    <h2 id="events-heading">Trivia. Karaoke. Game day. Sundays.</h2>
-    <p>Something going on most nights of the week. Schedule shifts seasonally — check Facebook for the current week.</p>
+    <p class="eyebrow">At the Grille</p>
+    <h2 id="events-heading">Live music, Bike Week, game day, every day.</h2>
+    <p>Something going on most nights. Schedule shifts seasonally — check Facebook for this week.</p>
   </div>
 
   <div class="events-grid">
     <article class="event-card reveal">
-      <span class="event-icon" aria-hidden="true">🎯</span>
-      <h3>Live Trivia</h3>
-      <p>Run by Challenge Entertainment. Free to play, prizes for the top teams.</p>
+      <span class="event-icon" aria-hidden="true">🎸</span>
+      <h3>Live Music</h3>
+      <p>The <strong>Bobby Friss Band</strong> is a regular — rocked the Grand Reopening and the courtyard hasn&rsquo;t been the same since. Rotating performers throughout the week.</p>
+      <span class="event-tag">Recurring</span>
+    </article>
+
+    <article class="event-card reveal">
+      <span class="event-icon" aria-hidden="true">🏍️</span>
+      <h3>Bike Week</h3>
+      <p>Daytona Beach is fifteen minutes up the road. Bike Week visitors get our packed courtyard, full bar, and live music on the patio.</p>
+      <span class="event-tag">March &amp; October</span>
     </article>
 
     <article class="event-card reveal">
       <span class="event-icon" aria-hidden="true">🎤</span>
       <h3>Karaoke</h3>
-      <p>Friday &amp; Saturday nights starting at 9 PM. Kid-friendly until 10 PM.</p>
+      <p>Friday and Saturday nights starting at 9 PM. Kid-friendly until 10 PM, then bring your A-game.</p>
+      <span class="event-tag">Fri &amp; Sat 9 PM</span>
     </article>
 
     <article class="event-card reveal">
       <span class="event-icon" aria-hidden="true">🏈</span>
       <h3>Game Day</h3>
-      <p>Every TV, every game. Pats fans, NFL Sundays, college Saturdays — it all plays here.</p>
-    </article>
-
-    <article class="event-card reveal">
-      <span class="event-icon" aria-hidden="true">🎸</span>
-      <h3>Live Music &amp; Comedy</h3>
-      <p>Rotating performers throughout the week. See the calendar for what&rsquo;s on.</p>
+      <p>Every TV, every game. NFL Sundays, college Saturdays, Pats fans welcome.</p>
+      <span class="event-tag">All season</span>
     </article>
   </div>
 
   <div class="events-cta reveal">
-    <a href="https://www.facebook.com/mulligansgrillepo/" target="_blank" rel="noopener" class="btn btn-ghost">Follow on Facebook for this week&rsquo;s lineup</a>
+    <a href="https://www.facebook.com/mulligansgrillepo/" target="_blank" rel="noopener" class="btn btn-on-dark">Follow on Facebook for this week&rsquo;s lineup</a>
   </div>
 </section>
 
@@ -300,9 +504,13 @@
 <!-- ═══ Z9: Footer ═════════════════════════════════════════════ -->
 <footer class="z9-footer">
   <div class="z9-inner">
+    <div class="z9-brand">
+      <img src="/assets/images/logo-golfball.png" alt="" aria-hidden="true">
+      <h3>Mulligan&rsquo;s Grille</h3>
+    </div>
     <div class="z9-cols">
       <div>
-        <h3>Mulligan&rsquo;s Grille</h3>
+        <h4>Visit</h4>
         <address>
           3830 S Nova Rd, Ste B1<br>
           Port Orange, FL 32127<br>
@@ -312,11 +520,12 @@
       <div>
         <h4>Site</h4>
         <ul>
+          <li><a href="#story">Our Story</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#menu">Menu</a></li>
           <li><a href="#visit">Hours &amp; Location</a></li>
           <li><a href="#events">Events</a></li>
-          <li><a href="/menu.pdf" target="_blank" rel="noopener">Full Menu (PDF)</a></li>
+          <li><a href="/assets/images/menu-page-1.png" target="_blank" rel="noopener">Full Menu</a></li>
         </ul>
       </div>
       <div>
@@ -327,7 +536,7 @@
         </div>
       </div>
     </div>
-    <p class="z9-bottom">&copy; <span class="js-footer-year">2026</span> Mulligan&rsquo;s Grille · Port Orange, FL</p>
+    <p class="z9-bottom">&copy; <span class="js-footer-year">2026</span> Mulligan&rsquo;s Grille · Port Orange, FL · Take a mulligan whenever you need one.</p>
   </div>
 </footer>
 

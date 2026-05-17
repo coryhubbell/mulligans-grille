@@ -4,8 +4,8 @@
   "description": "Mulligan's Grille — Wings, burgers, cold beer, good people.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a1410",
-  "theme_color": "#1a1410",
+  "background_color": "#ffffff",
+  "theme_color": "#1C6F36",
   "icons": [
     {
       "src": "/assets/images/favicon-192x192.png",
