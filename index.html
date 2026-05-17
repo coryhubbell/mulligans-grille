@@ -83,58 +83,383 @@
 <link rel="stylesheet" href="/assets/css/shared.css">
 <link rel="stylesheet" href="/assets/css/page-home.css">
 
-<!-- JSON-LD: Restaurant -->
+<!-- JSON-LD: Closed Semantic Circuit (SchemaBrains pattern)
+     WebSite → WebPage → Restaurant ↔ DefinedTermSet ↔ DefinedTerms ↔ Services
+     FAQPage → WebPage. Every entity linked by @id; every DefinedTerm carries
+     up to 4 sameAs links (Wikipedia, Wikidata, DBpedia, Product Ontology). -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Restaurant",
-  "@id": "https://mulligans-grille.com/#restaurant",
-  "name": "Mulligan's Grille",
-  "image": "https://mulligans-grille.com/assets/images/og-default.jpg",
-  "url": "https://mulligans-grille.com/",
-  "telephone": "+1-386-788-3268",
-  "priceRange": "$$",
-  "servesCuisine": ["American", "Bar Food", "Sports Bar"],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "3830 S Nova Rd, Ste B1",
-    "addressLocality": "Port Orange",
-    "addressRegion": "FL",
-    "postalCode": "32127",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 29.1383,
-    "longitude": -81.0042
-  },
-  "openingHoursSpecification": [
+  "@graph": [
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"],
-      "opens": "11:00",
-      "closes": "23:00"
+      "@type": "WebSite",
+      "@id": "https://mulligans-grille.com/#website",
+      "url": "https://mulligans-grille.com/",
+      "name": "Mulligan's Grille",
+      "description": "Port Orange's golf-themed neighborhood sports bar and grill — wings, burgers, cold beer, live music.",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://mulligans-grille.com/#restaurant" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://mulligans-grille.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     },
     {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Friday", "Saturday"],
-      "opens": "11:00",
-      "closes": "01:00"
+      "@type": "WebPage",
+      "@id": "https://mulligans-grille.com/#webpage",
+      "url": "https://mulligans-grille.com/",
+      "name": "Mulligan's Grille — Wings, Burgers & Cold Beer in Port Orange, FL",
+      "isPartOf": { "@id": "https://mulligans-grille.com/#website" },
+      "about": { "@id": "https://mulligans-grille.com/#restaurant" },
+      "mainEntity": { "@id": "https://mulligans-grille.com/#restaurant" },
+      "primaryImageOfPage": { "@id": "https://mulligans-grille.com/#primaryimage" },
+      "inLanguage": "en-US",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".hero-tagline", ".z3-declare-lede"]
+      }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://mulligans-grille.com/#primaryimage",
+      "url": "https://mulligans-grille.com/assets/images/og-default.jpg",
+      "contentUrl": "https://mulligans-grille.com/assets/images/og-default.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "Mulligan's Grille — Port Orange, FL"
+    },
+    {
+      "@type": ["Restaurant", "LocalBusiness", "Organization"],
+      "@id": "https://mulligans-grille.com/#restaurant",
+      "name": "Mulligan's Grille",
+      "alternateName": "Mulligan's",
+      "description": "Port Orange's golf-themed neighborhood sports bar and grill. Scratch-made wings, hand-cut steaks, signature burgers, full bar, live music in the Courtyard and Bar. Under new ownership: Tracy & Bobby Parks.",
+      "image": { "@id": "https://mulligans-grille.com/#primaryimage" },
+      "logo": "https://mulligans-grille.com/assets/images/logo-wordmark.png",
+      "url": "https://mulligans-grille.com/",
+      "telephone": "+1-386-265-0653",
+      "priceRange": "$$",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Cash, Credit Card, Debit Card",
+      "servesCuisine": ["American", "Bar Food", "Sports Bar", "Burgers", "Wings"],
+      "smokingAllowed": false,
+      "acceptsReservations": "False",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3830 S Nova Rd, Ste B1",
+        "addressLocality": "Port Orange",
+        "addressRegion": "FL",
+        "postalCode": "32127",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 29.1383,
+        "longitude": -81.0042
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Port Orange", "sameAs": "https://en.wikipedia.org/wiki/Port_Orange,_Florida" },
+        { "@type": "City", "name": "Daytona Beach", "sameAs": "https://en.wikipedia.org/wiki/Daytona_Beach,_Florida" },
+        { "@type": "City", "name": "South Daytona", "sameAs": "https://en.wikipedia.org/wiki/South_Daytona,_Florida" },
+        { "@type": "AdministrativeArea", "name": "Volusia County", "sameAs": "https://en.wikipedia.org/wiki/Volusia_County,_Florida" }
+      ],
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Volusia County, Florida",
+        "sameAs": "https://en.wikipedia.org/wiki/Volusia_County,_Florida"
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday"], "opens": "15:00", "closes": "22:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "11:00", "closes": "22:00" }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/profile.php?id=61588425839792",
+        "https://www.instagram.com/mulligansgrille/"
+      ],
+      "founder": [
+        { "@type": "Person", "name": "Tracy Parks" },
+        { "@type": "Person", "name": "Bobby Parks" }
+      ],
+      "hasMenu": { "@id": "https://mulligans-grille.com/#menu" },
+      "knowsAbout": { "@id": "https://mulligans-grille.com/#glossary" },
+      "makesOffer": [
+        { "@id": "https://mulligans-grille.com/#service-dinein" },
+        { "@id": "https://mulligans-grille.com/#service-takeout" },
+        { "@id": "https://mulligans-grille.com/#service-bar" },
+        { "@id": "https://mulligans-grille.com/#service-livemusic" },
+        { "@id": "https://mulligans-grille.com/#service-karaoke" }
+      ]
+    },
+    {
+      "@type": "Menu",
+      "@id": "https://mulligans-grille.com/#menu",
+      "name": "Mulligan's Grille Menu",
+      "url": "https://mulligans-grille.com/menu.pdf",
+      "inLanguage": "en-US",
+      "provider": { "@id": "https://mulligans-grille.com/#restaurant" },
+      "hasMenuSection": [
+        {
+          "@type": "MenuSection",
+          "name": "Wings & Starters",
+          "hasMenuItem": [
+            { "@type": "MenuItem", "name": "Loaded Grille Fries" },
+            { "@type": "MenuItem", "name": "Buffalo Wings" }
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Signature Burgers",
+          "hasMenuItem": [
+            { "@type": "MenuItem", "name": "Hole-In-One Burger" },
+            { "@type": "MenuItem", "name": "Buttermilk Fried Chicken Sandwich" }
+          ]
+        },
+        {
+          "@type": "MenuSection",
+          "name": "Plates",
+          "hasMenuItem": [
+            { "@type": "MenuItem", "name": "Southern Fried Chicken" },
+            { "@type": "MenuItem", "name": "Hand-Cut Steaks" }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mulligans-grille.com/#glossary",
+      "name": "Mulligan's Grille Topical Glossary",
+      "description": "Core concepts and entities for Mulligan's Grille — sports bar, golf heritage, American grill cuisine.",
+      "hasDefinedTerm": [
+        { "@id": "https://mulligans-grille.com/#term-mulligan" },
+        { "@id": "https://mulligans-grille.com/#term-sportsbar" },
+        { "@id": "https://mulligans-grille.com/#term-grill" },
+        { "@id": "https://mulligans-grille.com/#term-burger" },
+        { "@id": "https://mulligans-grille.com/#term-wings" },
+        { "@id": "https://mulligans-grille.com/#term-karaoke" },
+        { "@id": "https://mulligans-grille.com/#term-livemusic" },
+        { "@id": "https://mulligans-grille.com/#term-portorange" },
+        { "@id": "https://mulligans-grille.com/#term-daytona" }
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://mulligans-grille.com/#term-mulligan",
+      "name": "Mulligan (golf)",
+      "description": "A golf do-over — a second chance on a missed shot, taken informally without penalty. The brand inspiration for Mulligan's Grille.",
+      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Mulligan_(games)",
+        "https://www.wikidata.org/wiki/Q1956538",
+        "https://dbpedia.org/page/Mulligan_(games)",
+        "http://www.productontology.org/doc/Mulligan_(games)"
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://mulligans-grille.com/#term-sportsbar",
+      "name": "Sports bar",
+      "description": "A bar that televises sporting events and serves food and drink — Mulligan's runs every TV for game day.",
+      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Sports_bar",
+        "https://www.wikidata.org/wiki/Q2415570",
+        "https://dbpedia.org/page/Sports_bar",
+        "http://www.productontology.org/doc/Sports_bar"
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://mulligans-grille.com/#term-grill",
+      "name": "Bar and grill",
+      "description": "A casual American restaurant format combining a full bar with a grill-forward kitchen.",
+      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Bar_and_grill",
+        "https://www.wikidata.org/wiki/Q4860849",
+        "https://dbpedia.org/page/Bar_and_grill",
+        "http://www.productontology.org/doc/Bar_and_grill"
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://mulligans-grille.com/#term-burger",
+      "name": "Hamburger",
+      "description": "A grilled or fried ground-beef sandwich on a bun — Mulligan's signature Hole-In-One Burger.",
+      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Hamburger",
+        "https://www.wikidata.org/wiki/Q6663",
+        "https://dbpedia.org/page/Hamburger",
+        "http://www.productontology.org/doc/Hamburger"
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://mulligans-grille.com/#term-wings",
+      "name": "Buffalo wing",
+      "description": "Deep-fried chicken wings tossed in a vinegar-and-cayenne hot sauce, typically served with celery and ranch or bleu cheese.",
+      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Buffalo_wing",
+        "https://www.wikidata.org/wiki/Q872711",
+        "https://dbpedia.org/page/Buffalo_wing",
+        "http://www.productontology.org/doc/Buffalo_wing"
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://mulligans-grille.com/#term-karaoke",
+      "name": "Karaoke",
+      "description": "Interactive entertainment where guests sing to recorded backing tracks — Mulligan's runs karaoke Friday and Saturday nights.",
+      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Karaoke",
+        "https://www.wikidata.org/wiki/Q170978",
+        "https://dbpedia.org/page/Karaoke",
+        "http://www.productontology.org/doc/Karaoke"
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://mulligans-grille.com/#term-livemusic",
+      "name": "Live music",
+      "description": "Concerts performed in front of a live audience — the Bobby Friss Band is a regular Mulligan's act.",
+      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Concert",
+        "https://www.wikidata.org/wiki/Q182832",
+        "https://dbpedia.org/page/Concert",
+        "http://www.productontology.org/doc/Concert"
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://mulligans-grille.com/#term-portorange",
+      "name": "Port Orange, Florida",
+      "description": "City in Volusia County, Florida — home to Mulligan's Grille on South Nova Road.",
+      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Port_Orange,_Florida",
+        "https://www.wikidata.org/wiki/Q1029130",
+        "https://dbpedia.org/page/Port_Orange,_Florida",
+        "http://www.productontology.org/doc/Port_Orange,_Florida"
+      ]
+    },
+    {
+      "@type": "DefinedTerm",
+      "@id": "https://mulligans-grille.com/#term-daytona",
+      "name": "Daytona Beach, Florida",
+      "description": "Coastal city fifteen minutes north of Mulligan's — Bike Week, racing, and beach traffic for the grille.",
+      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
+      "sameAs": [
+        "https://en.wikipedia.org/wiki/Daytona_Beach,_Florida",
+        "https://www.wikidata.org/wiki/Q49228",
+        "https://dbpedia.org/page/Daytona_Beach,_Florida",
+        "http://www.productontology.org/doc/Daytona_Beach,_Florida"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://mulligans-grille.com/#service-dinein",
+      "name": "Dine-in service",
+      "description": "Full-service dining in the main room, the bar, or the Courtyard and Bar out back.",
+      "serviceType": "Restaurant dine-in",
+      "provider": { "@id": "https://mulligans-grille.com/#restaurant" },
+      "areaServed": { "@type": "City", "name": "Port Orange" },
+      "subjectOf": { "@id": "https://mulligans-grille.com/#term-grill" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://mulligans-grille.com/#service-takeout",
+      "name": "Takeout",
+      "description": "Call ahead to order takeout for pickup at the bar.",
+      "serviceType": "Takeout",
+      "provider": { "@id": "https://mulligans-grille.com/#restaurant" },
+      "areaServed": { "@type": "City", "name": "Port Orange" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://mulligans-grille.com/#service-bar",
+      "name": "Full bar",
+      "description": "Cocktails, draft and bottled beer, wine, and game-day TVs.",
+      "serviceType": "Bar",
+      "provider": { "@id": "https://mulligans-grille.com/#restaurant" },
+      "subjectOf": { "@id": "https://mulligans-grille.com/#term-sportsbar" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://mulligans-grille.com/#service-livemusic",
+      "name": "Live music",
+      "description": "Regular live performers in the Courtyard and Bar, including the Bobby Friss Band.",
+      "serviceType": "Live entertainment",
+      "provider": { "@id": "https://mulligans-grille.com/#restaurant" },
+      "subjectOf": { "@id": "https://mulligans-grille.com/#term-livemusic" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://mulligans-grille.com/#service-karaoke",
+      "name": "Karaoke nights",
+      "description": "Karaoke Friday and Saturday nights starting at 8 PM.",
+      "serviceType": "Karaoke",
+      "provider": { "@id": "https://mulligans-grille.com/#restaurant" },
+      "subjectOf": { "@id": "https://mulligans-grille.com/#term-karaoke" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mulligans-grille.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is Mulligan's Grille located?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mulligan's Grille is at 3830 S Nova Rd, Ste B1, Port Orange, FL 32127 — fifteen minutes south of Daytona Beach."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are Mulligan's Grille hours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monday 3:00 PM to 10:00 PM; Tuesday through Sunday 11:00 AM to 10:00 PM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Mulligan's Grille take reservations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No — we're walk-in only. The Courtyard and Bar is always open, and VIP list members get first heads-up on busy nights."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Mulligan's Grille have live music?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — the Bobby Friss Band is a regular and we host rotating performers throughout the week. Karaoke runs Friday and Saturday nights at 8 PM."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I order takeout from Mulligan's Grille?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — call (386) 265-0653 to place a takeout order for pickup at the bar."
+          }
+        }
+      ],
+      "isPartOf": { "@id": "https://mulligans-grille.com/#webpage" }
     }
-  ],
-  "sameAs": [
-    "https://www.facebook.com/profile.php?id=61588425839792",
-    "https://www.instagram.com/mulligansgrille/"
-  ],
-  "acceptsReservations": "False",
-  "menu": "https://mulligans-grille.com/menu.pdf"
+  ]
 }
 </script>
 </head>
 <body>
 
 <!-- ═══ Z1: Sticky Nav ═══════════════════════════════════════ -->
-<header class="z1-header" id="site-header">
+<header class="z1-header" id="site-header" data-zone="Z1-header">
   <div class="z1-inner">
     <a href="#top" class="z1-logo" aria-label="Mulligan's Grille home">
       <img src="/assets/images/logo-wordmark.png" alt="Mulligan's Grille">
@@ -144,13 +469,14 @@
         <li><a href="#story">Our Story</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#visit">Visit</a></li>
+        <li><a href="#vip">VIP</a></li>
         <li><a href="#events">Events</a></li>
       </ul>
     </nav>
     <div class="z1-actions">
-      <a href="tel:+13867883268" class="z1-phone-cta" aria-label="Call (386) 788-3268">
+      <a href="tel:+13862650653" class="z1-phone-cta" aria-label="Call (386) 265-0653">
         <span class="z1-phone-icon" aria-hidden="true">📞</span>
-        <span class="z1-phone-text">(386) 788-3268</span>
+        <span class="z1-phone-text">(386) 265-0653</span>
       </a>
       <button class="z1-mobile-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
@@ -162,11 +488,14 @@
 <main id="top">
 
 <!-- ═══ Hero ════════════════════════════════════════════════════ -->
-<section class="hero" aria-labelledby="hero-heading">
+<section class="hero" aria-labelledby="hero-heading" data-zone="Z2-hero">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="hero-copy">
-      <p class="hero-eyebrow">Port Orange · Under new ownership 2026</p>
+      <p class="hero-eyebrow">
+        <span class="hero-eyebrow-line">Mulligan&rsquo;s Grille · Port Orange · Florida</span>
+        <span class="hero-eyebrow-line hero-eyebrow-sub">Under new ownership 2026</span>
+      </p>
       <h1 id="hero-heading" class="script">Take a Mulligan.</h1>
       <p class="hero-tagline">Wings · Burgers · Cold Beer</p>
       <p class="hero-sub">A neighborhood golf-and-grill on Nova Road. Hand-cut steaks, scratch-made sauces, the Hole-In-One Burger, and the Courtyard and Bar — a do-over whenever you need one.</p>
@@ -190,13 +519,35 @@
           <source src="/assets/video/hero-reopening.mp4" type="video/mp4">
         </video>
       </div>
-      <figcaption class="hero-video-caption">Grand reopening · March 2026</figcaption>
+      <figcaption class="hero-video-caption">Grand reopening · May 2026</figcaption>
     </figure>
   </div>
 </section>
 
+<!-- ═══ Z3: BUTTER ZONE — Entity Declaration ═══════════════════ -->
+<!-- Plain-language brand + service + location declaration. Zone-theory
+     "butter zone" — first crawl checkpoint after the hero. Mirrors the
+     Restaurant JSON-LD so on-page text and structured data align. -->
+<section class="z3-declare" aria-label="About Mulligan's Grille" data-zone="Z3-butter">
+  <div class="z3-declare-inner">
+    <p class="z3-declare-lede">
+      <strong>Mulligan&rsquo;s Grille</strong> is a golf-themed neighborhood
+      <strong>sports bar and grill</strong> in
+      <strong>Port Orange, Florida</strong> — serving
+      <a href="#menu">scratch-made wings</a>,
+      <a href="#menu">hand-cut steaks</a>,
+      <a href="#menu">signature burgers</a>, and
+      <a href="#menu">craft cocktails</a> from a full bar, with
+      <a href="#events">live music</a>, karaoke, and game-day TVs in the
+      Courtyard and Bar.
+      <a href="#visit">Open Mon&ndash;Sun</a> at
+      <a href="https://www.google.com/maps/dir/?api=1&destination=3830+S+Nova+Rd+Ste+B1+Port+Orange+FL+32127" target="_blank" rel="noopener">3830 S Nova Rd, Ste B1, Port Orange, FL 32127</a>.
+    </p>
+  </div>
+</section>
+
 <!-- ═══ Story — How Did This Mulligan Thing Start? ═════════════ -->
-<section class="story" id="story" aria-labelledby="story-heading">
+<section class="story" id="story" aria-labelledby="story-heading" data-zone="Z4-story">
   <div class="story-inner">
     <p class="eyebrow">Our Story</p>
     <h2 id="story-heading" class="script">How did this Mulligan thing start?</h2>
@@ -214,7 +565,7 @@
 </section>
 
 <!-- ═══ About ══════════════════════════════════════════════════ -->
-<section class="about" id="about" aria-labelledby="about-heading">
+<section class="about" id="about" aria-labelledby="about-heading" data-zone="Z5-about">
   <div class="about-grid">
     <div>
       <p class="eyebrow">About</p>
@@ -246,7 +597,7 @@
 </section>
 
 <!-- ═══ Menu — real items, real prices ═════════════════════════ -->
-<section class="menu" id="menu" aria-labelledby="menu-heading">
+<section class="menu" id="menu" aria-labelledby="menu-heading" data-zone="Z6-menu">
   <div class="menu-head reveal">
     <p class="eyebrow">What&rsquo;s good</p>
     <h2 id="menu-heading"><span class="script">A menu</span> built around what people actually order.</h2>
@@ -468,7 +819,7 @@
 </section>
 
 <!-- ═══ Hours & Location ═══════════════════════════════════════ -->
-<section class="location" id="visit" aria-labelledby="visit-heading">
+<section class="location" id="visit" aria-labelledby="visit-heading" data-zone="Z7-location">
   <div class="location-grid">
     <div class="location-info reveal">
       <p class="eyebrow">Find us</p>
@@ -481,27 +832,23 @@
         <span class="courtyard">Bar + dining room + the Courtyard and Bar out back.</span>
       </address>
 
-      <a href="tel:+13867883268" class="location-phone">(386) 788-3268</a>
+      <a href="tel:+13862650653" class="location-phone">(386) 265-0653</a>
 
       <table class="hours-table" aria-label="Hours of operation">
         <tbody>
-          <tr data-day="1"><th scope="row">Monday</th><td>11:00 AM – 11:00 PM</td></tr>
-          <tr data-day="2"><th scope="row">Tuesday</th><td>11:00 AM – 11:00 PM</td></tr>
-          <tr data-day="3"><th scope="row">Wednesday</th><td>11:00 AM – 11:00 PM</td></tr>
-          <tr data-day="4"><th scope="row">Thursday</th><td>11:00 AM – 11:00 PM</td></tr>
-          <tr data-day="5"><th scope="row">Friday</th><td>11:00 AM – 1:00 AM</td></tr>
-          <tr data-day="6"><th scope="row">Saturday</th><td>11:00 AM – 1:00 AM</td></tr>
-          <tr data-day="0"><th scope="row">Sunday</th><td>11:00 AM – 11:00 PM</td></tr>
+          <tr data-day="1"><th scope="row">Monday</th><td>3:00 PM – 10:00 PM</td></tr>
+          <tr data-day="2"><th scope="row">Tuesday</th><td>11:00 AM – 10:00 PM</td></tr>
+          <tr data-day="3"><th scope="row">Wednesday</th><td>11:00 AM – 10:00 PM</td></tr>
+          <tr data-day="4"><th scope="row">Thursday</th><td>11:00 AM – 10:00 PM</td></tr>
+          <tr data-day="5"><th scope="row">Friday</th><td>11:00 AM – 10:00 PM</td></tr>
+          <tr data-day="6"><th scope="row">Saturday</th><td>11:00 AM – 10:00 PM</td></tr>
+          <tr data-day="0"><th scope="row">Sunday</th><td>11:00 AM – 10:00 PM</td></tr>
         </tbody>
       </table>
 
-      <p class="hours-note">Breakfast Thu–Sun from 7:00 AM (please call to confirm).</p>
-
       <div class="location-actions">
-        <a href="tel:+13867883268" class="btn btn-primary">Call (386) 788-3268</a>
+        <a href="tel:+13862650653" class="btn btn-primary">Call (386) 265-0653</a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=3830+S+Nova+Rd+Ste+B1+Port+Orange+FL+32127" target="_blank" rel="noopener" class="btn btn-ghost">Directions</a>
-        <a href="https://www.doordash.com/store/mulligans-grille-port-orange/" target="_blank" rel="noopener" class="btn btn-ghost">DoorDash</a>
-        <a href="https://www.ubereats.com/store/mulligans-grille/" target="_blank" rel="noopener" class="btn btn-ghost">Uber Eats</a>
       </div>
     </div>
 
@@ -516,8 +863,33 @@
   </div>
 </section>
 
+<!-- ═══ VIP — Regulars / Texting Opt-In ════════════════════════ -->
+<section class="vip" id="vip" aria-labelledby="vip-heading" data-zone="Z8-vip">
+  <div class="vip-card reveal">
+    <img class="vip-mark" src="/assets/images/logo-golfball.png" alt="" aria-hidden="true">
+
+    <div class="vip-body">
+      <p class="vip-badge">VIP LIST</p>
+      <p class="eyebrow">Regulars</p>
+      <h2 id="vip-heading">First tee-time on every good thing.</h2>
+      <ul class="vip-perks">
+        <li><span aria-hidden="true">🎸</span> Live music drops</li>
+        <li><span aria-hidden="true">👨‍👩‍👧</span> Family events</li>
+        <li><span aria-hidden="true">📅</span> Reservations</li>
+        <li><span aria-hidden="true">🏷️</span> Members-only coupons</li>
+      </ul>
+    </div>
+
+    <a href="sms:+13863436665" class="vip-number" aria-label="Text (386) 343-6665 to opt in">
+      <span class="vip-number-label">Text to join</span>
+      <span class="vip-number-digits">(386) 343-6665</span>
+      <span class="vip-number-fine">Msg rates may apply · no spam</span>
+    </a>
+  </div>
+</section>
+
 <!-- ═══ Events ═════════════════════════════════════════════════ -->
-<section class="events" id="events" aria-labelledby="events-heading">
+<section class="events" id="events" aria-labelledby="events-heading" data-zone="Z8b-events">
   <div class="events-head reveal">
     <p class="eyebrow">At the Grille</p>
     <h2 id="events-heading">Live music, Bike Week, game day, every day.</h2>
@@ -528,7 +900,7 @@
     <article class="event-card reveal">
       <span class="event-icon" aria-hidden="true">🎸</span>
       <h3>Live Music</h3>
-      <p>The <strong>Bobby Friss Band</strong> is a regular — rocked the Grand Reopening and the courtyard hasn&rsquo;t been the same since. Rotating performers throughout the week.</p>
+      <p>The <a href="https://www.bobbyfriss.com/" target="_blank" rel="noopener"><strong>Bobby Friss Band</strong></a> is a regular — rocked the Grand Reopening and the courtyard hasn&rsquo;t been the same since. Rotating performers throughout the week.</p>
       <span class="event-tag">Recurring</span>
     </article>
 
@@ -542,8 +914,8 @@
     <article class="event-card reveal">
       <span class="event-icon" aria-hidden="true">🎤</span>
       <h3>Karaoke</h3>
-      <p>Friday and Saturday nights starting at 9 PM. Kid-friendly until 10 PM, then bring your A-game.</p>
-      <span class="event-tag">Fri &amp; Sat 9 PM</span>
+      <p>Friday and Saturday nights starting at 8 PM. Bring your A-game.</p>
+      <span class="event-tag">Fri &amp; Sat 8 PM</span>
     </article>
 
     <article class="event-card reveal">
@@ -562,7 +934,7 @@
 </main>
 
 <!-- ═══ Z9: Footer ═════════════════════════════════════════════ -->
-<footer class="z9-footer">
+<footer class="z9-footer" data-zone="Z9-footer">
   <div class="z9-inner">
     <div class="z9-brand">
       <img src="/assets/images/logo-golfball.png" alt="" aria-hidden="true">
@@ -574,7 +946,7 @@
         <address>
           3830 S Nova Rd, Ste B1<br>
           Port Orange, FL 32127<br>
-          <a href="tel:+13867883268">(386) 788-3268</a>
+          <a href="tel:+13862650653">(386) 265-0653</a>
         </address>
       </div>
       <div>
@@ -592,7 +964,6 @@
         <h4>Follow</h4>
         <div class="z9-social">
           <a href="https://www.facebook.com/profile.php?id=61588425839792" target="_blank" rel="noopener">Facebook</a>
-          <a href="https://www.instagram.com/mulligansgrille/" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
     </div>
