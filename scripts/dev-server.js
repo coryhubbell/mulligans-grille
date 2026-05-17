@@ -49,6 +49,9 @@ const MIME = {
   ".woff2": "font/woff2",
   ".pdf": "application/pdf",
   ".php": "text/html; charset=utf-8",
+  ".mp4": "video/mp4",
+  ".webm": "video/webm",
+  ".mov": "video/quicktime",
 };
 
 function mimeFor(p) {

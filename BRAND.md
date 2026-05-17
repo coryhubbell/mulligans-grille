@@ -3,9 +3,11 @@
 ## Identity
 
 - **Name:** Mulligan's Grille
-- **Tagline:** Wings, burgers, cold beer, good people.
+- **Tagline:** Take a mulligan. Wings, burgers, cold beer — and a do-over whenever you need one.
 - **Domain:** mulligans-grille.com
-- **Aesthetic:** Classic American roadhouse, modern execution. Dark wood, warm amber, neon-sign warmth, generous whitespace. Not Irish-themed — American casual sports grill.
+- **Owners:** Tracy & Bobby Parks (took over 2026)
+- **Theme:** Golf-themed neighborhood grill in Port Orange, FL. The mulligan = a do-over. Imagery leans on golf balls, clubs, putting greens, fairway green, with a neon-sign / sports-bar nighttime mood layered on top. **Not Irish-themed** despite the name — the name comes from the golf mulligan (David Mulligan / Buddy Mulligan, 1920s–30s).
+- **Audiences:** Locals (lunch, neighborhood regulars), families (kids' coloring menu), bar crowd (live music, Bobby Friss Band), Bike Week visitors (Daytona Beach is 15 min away).
 
 ## Color Tokens
 
@@ -13,58 +15,75 @@ Defined in `assets/css/shared.css` as `:root` CSS custom properties.
 
 | Token | Value | Use |
 |---|---|---|
-| `--bg` | `#1a1410` | Page background — near-black warm brown |
-| `--bg-elevated` | `#221a14` | Card / alternating section bg |
-| `--bg-soft` | `#2a2018` | Hover, dividers |
-| `--text` | `#f5ead8` | Main copy — warm off-white |
-| `--text-muted` | `#b8a890` | Secondary text — warm grey-tan |
-| `--text-dim` | `#7a6a55` | Tertiary, fine print |
-| `--amber` | `#d4a548` | Primary accent — neon-warm gold |
-| `--amber-bright` | `#f0bf58` | Hover state |
-| `--rust` | `#b85c2a` | Secondary accent (sparing use) |
-| `--cream` | `#ede1c4` | Light surface for contrast |
-| `--border` | `rgba(245, 234, 216, 0.12)` | Borders, dividers |
+| `--bg` | `#ffffff` | Page background (matches the print menu) |
+| `--bg-elevated` | `#f6f3ea` | Alternating cream-tinted section |
+| `--bg-soft` | `#ecf2ec` | Faint green tint, hover states |
+| `--bg-dark` | `#0e1a10` | Hero / footer / events — dark brick / forest-shadow |
+| `--bg-darker` | `#061008` | Deepest accent under hero |
+| `--text` | `#1a1a1a` | Body copy on white |
+| `--text-on-dark` | `#f5f5f0` | Body copy on dark sections |
+| `--text-muted` | `#5a5a5a` | Secondary copy on white |
+| `--text-muted-on-dark` | `#b8bcb0` | Secondary copy on dark |
+| `--green` | `#3FB54A` | Primary green — wordmark stroke, links, accent |
+| `--green-deep` | `#1C6F36` | Forest green — headings, buttons, shadows |
+| `--green-neon` | `#2BE863` | Hero neon glow only |
+| `--purple-neon` | `#A855F7` | Hero / neon accent (sparing) |
+| `--purple-deep` | `#6B21A8` | Deeper purple companion |
+| `--ink` | `#0a0a0a` | High-contrast headlines |
+| `--border` | `rgba(28,111,54,0.16)` | Card borders, dividers on white |
+| `--border-dark` | `rgba(245,245,240,0.12)` | Dividers on dark sections |
 
-Use amber **sparingly** — borders, button fills, headline accents. Never for body text or entire sections.
+Use neon greens and purples **only in the hero**. The rest of the site is print-menu green-on-white: forest green for headings/buttons, lime green for accents, dark green-tinted borders.
 
 ## Typography
 
 | Role | Font | Stack | Use |
 |---|---|---|---|
-| Display | Bebas Neue | `var(--font-display)` | H1, H2 section headings (all-caps, condensed) |
-| Body | Source Serif 4 | `var(--font-body)` | Paragraphs (readable serif, warm/editorial) |
-| UI | Inter Tight | `var(--font-ui)` | Nav, buttons, fine print |
+| Script wordmark | Sacramento | `var(--font-script)` | Hero H1, story H2, footer wordmark — anywhere the "Mulligan's Grille" handwritten feel is wanted |
+| Display | Oswald | `var(--font-display)` | Caps section headings (H2/H3 in menu, events, location) |
+| Body | Inter | `var(--font-body)` | Paragraphs, nav, buttons, fine print |
 
-Loaded from Google Fonts with `display=swap`. H1 line-height 0.95, tight tracking — feels like a sign painted on the building.
+Loaded from Google Fonts (`display=swap`). Apply the `.script` class to override the all-caps Oswald default when you want the script feel.
 
 ### Type scale (mobile-first, fluid)
 
 ```css
---text-xs:   0.8125rem;
---text-sm:   0.9375rem;
---text-base: 1.0625rem;             /* body 17px — generous */
---text-lg:   1.25rem;
---text-xl:   clamp(1.5rem, 2.5vw, 2rem);
---text-2xl:  clamp(2rem, 4vw, 3rem);
---text-3xl:  clamp(2.75rem, 6vw, 4.5rem);
---text-hero: clamp(3.5rem, 10vw, 8rem);
+--text-xs:        0.8125rem;
+--text-sm:        0.9375rem;
+--text-base:      1.0625rem;
+--text-lg:        1.25rem;
+--text-xl:        clamp(1.5rem, 2.5vw, 2rem);
+--text-2xl:       clamp(2rem, 4vw, 3rem);
+--text-3xl:       clamp(2.5rem, 5.5vw, 4rem);
+--text-hero:      clamp(3rem, 9vw, 7rem);
+--text-script-xl: clamp(3.5rem, 10vw, 8rem);
 ```
+
+## Visual Motifs
+
+- **Script wordmark** with light-green + forest-green dual-stroke underline (the printed-menu signature)
+- **Golf ball + MG monogram** in a green circle (logo lockup)
+- **Neon sign** on dark brick (the iconic in-restaurant sign) — used as the hero background
+- **Crossed golf clubs** (neon sign, mascot hats)
+- **Putting-green flagstick** for wing-count divisions on the print menu
+- **Retro cartoon golf-ball mascots** (boy in green shorts, girl in pink skirt) — family-friendly accent only
 
 ## Voice & Tone
 
-- **Voice:** plainspoken, neighborhood, confident — not corporate, not Irish-themed kitsch
-- **Person:** First-person plural for the restaurant ("we"), second-person for the reader ("you")
-- **Avoid:** "Welcome to our restaurant," generic bistro language, shamrocks/leprechauns, "elevated dining"
+- **Voice:** plainspoken, neighborhood, golf-pun-friendly. Not corporate, not Irish-themed kitsch.
+- **Person:** First-person plural for the restaurant ("we"); second-person for the reader ("you").
+- **Menu language:** lean into the puns — *Partee Starters*, *Club ✕ Wings*, *Hole-In-One Burger*, *In the Ruff*, *Goat Cheese Golf Balls*, *Mulligan's Special Sauce*. Don't strip the personality.
+- **Avoid:** "Welcome to our restaurant," generic bistro language, shamrocks/leprechauns, "elevated dining."
 
 ## Motion
 
-- Hero load-in: H1 fade-up + slight letter-spacing decrease over 800ms; subhead + CTAs stagger 150ms apart
-- Scroll reveals: section headings fade-up via IntersectionObserver (opacity 0→1 + translateY 12px→0, 600ms ease-out)
+- Hero load-in: title fades up with green/purple neon glow; eyebrow, tagline, sub, and CTAs stagger 150ms apart
+- Scroll reveals: section content fades up via IntersectionObserver (`.reveal` → `.is-visible`)
 - No parallax. No autoplay video. No scroll-jacking.
-- Respect `prefers-reduced-motion: reduce` — disable all transitions/animations.
+- Respect `prefers-reduced-motion: reduce` — animations and transitions disabled.
 
 ## Accessibility
 
-- Body copy contrast against `--bg`: 7:1 minimum (WCAG AAA)
-- Interactive elements: 4.5:1 minimum (WCAG AA)
-- Visible focus rings on every interactive element — never `outline: none` without an alternative
+- Body copy contrast against `--bg`: AAA on white where possible
+- Neon text on dark hero relies on the glow + drop-shadow stack — never use neon on white without re-checking contrast
+- Visible focus rings on every interactive element — `outline: 2px solid var(--green)`

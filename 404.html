@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#1a1410">
+<meta name="theme-color" content="#1C6F36">
 <title>This page took a mulligan · Mulligan's Grille</title>
-<meta name="description" content="The page you're looking for doesn't exist. Head back to the grill.">
+<meta name="description" content="The page you're looking for doesn't exist. Take a mulligan and head back to the grill.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://mulligans-grille.com/404.html">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
@@ -13,7 +13,7 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:wght@400;600&family=Inter+Tight:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/shared.css">
 
 <style>
@@ -26,20 +26,45 @@
     text-align: center;
   }
   .err-inner { max-width: 640px; }
-  .err-code {
+  .err-ball {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 30%, #fff 0%, #f0f0f0 60%, #d8d8d8 100%);
+    box-shadow:
+      inset -6px -8px 16px rgba(0,0,0,0.12),
+      0 12px 32px -8px rgba(0,0,0,0.2);
+    position: relative;
+  }
+  .err-ball::after {
+    content: "MG";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--font-display);
-    font-size: clamp(6rem, 18vw, 12rem);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--green-deep);
+    letter-spacing: 0.04em;
+  }
+  .err-code {
+    font-family: var(--font-script);
+    font-size: clamp(4rem, 12vw, 8rem);
     line-height: 1;
-    color: var(--amber);
-    letter-spacing: 0.02em;
-    margin-bottom: 1rem;
+    color: var(--green-deep);
+    margin-bottom: 0.5rem;
   }
   .err-title {
     font-family: var(--font-display);
     font-size: var(--text-2xl);
     text-transform: uppercase;
-    color: var(--text);
+    color: var(--ink);
     margin-bottom: 1rem;
+    letter-spacing: 0.02em;
   }
   .err-body {
     font-family: var(--font-body);
@@ -60,15 +85,18 @@
 
 <header class="z1-header is-scrolled">
   <div class="z1-inner">
-    <a class="z1-logo" href="/">Mulligan&rsquo;s Grille</a>
+    <a class="z1-logo" href="/">
+      <img src="/assets/images/logo-wordmark.png" alt="Mulligan's Grille">
+    </a>
   </div>
 </header>
 
 <main class="err-wrap">
   <div class="err-inner">
-    <div class="err-code">404</div>
-    <h1 class="err-title">This page took a mulligan.</h1>
-    <p class="err-body">The page you&rsquo;re looking for isn&rsquo;t on the menu. Head back to the grill — we&rsquo;ll get you sorted.</p>
+    <div class="err-ball" aria-hidden="true"></div>
+    <div class="err-code">Mulligan!</div>
+    <h1 class="err-title">404 — This page took a mulligan</h1>
+    <p class="err-body">That page isn&rsquo;t on the menu. Re-tee and head back to the grill — we&rsquo;ll get you sorted.</p>
     <div class="err-actions">
       <a href="/" class="btn btn-primary">← Back to the grill</a>
       <a href="tel:+13867883268" class="btn btn-ghost">Call (386) 788-3268</a>

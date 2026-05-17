@@ -28,3 +28,12 @@ node_modules/
 # Build output (if any)
 dist/
 .cache/
+
+# Raw originals — copied into assets/images/ and assets/docs/ under clean names
+assets from previous businness/
+
+# Local reference material — kept out of repo
+Zone theroy/
+
+# Local QA screenshots
+.qa-screens/

@@ -3,7 +3,7 @@
  * Cache-first strategy for static assets, network-first for HTML
  */
 
-const CACHE_VERSION = 'site-v1';
+const CACHE_VERSION = 'site-v2-rebrand';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
@@ -12,9 +12,10 @@ const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 const PRECACHE_ASSETS = [
   '/',
   '/assets/css/shared.css',
-  '/assets/css/deferred.css',
-  '/assets/images/favicon-32x32.png',
-  '/assets/images/apple-touch-icon.png',
+  '/assets/css/page-home.css',
+  '/assets/js/main.js',
+  '/assets/images/logo-wordmark.png',
+  '/assets/images/logo-golfball.png',
   '/manifest.json',
   '/offline.html'
 ];

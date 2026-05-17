@@ -83,6 +83,15 @@
 
   function registerServiceWorker() {
     if (!('serviceWorker' in navigator)) return;
+    // Skip SW on localhost / 127.0.0.1 — keeps local dev free of stale caches
+    var host = location.hostname;
+    if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local')) {
+      // Also unregister any existing SW from a prior session so refreshes hit disk
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
+        regs.forEach(function (reg) { reg.unregister(); });
+      }).catch(function () {});
+      return;
+    }
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('/sw.js').catch(function () { /* noop */ });
     });
