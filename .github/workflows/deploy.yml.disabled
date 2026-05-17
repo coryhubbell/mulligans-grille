@@ -1,0 +1,25 @@
+name: Deploy to Cloudways
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.CLOUDWAYS_HOST }}
+          username: ${{ secrets.CLOUDWAYS_USER }}
+          key: ${{ secrets.CLOUDWAYS_KEY }}
+          script: |
+            cd ${{ secrets.CLOUDWAYS_PATH }}
+            git fetch origin main
+            git reset --hard origin/main
+            echo "Deployed at $(date)"

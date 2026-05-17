@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mulligan's Grille</title>
+  <subtitle>Latest news and updates from Mulligan's Grille</subtitle>
+  <link href="https://mulligans-grille.com/feed.xml" rel="self" />
+  <link href="https://mulligans-grille.com/" />
+  <updated>2026-05-17T00:00:00Z</updated>
+  <id>https://mulligans-grille.com/</id>
+  <author>
+    <name>Mulligan's Grille</name>
+    <email>{{CONTACT_EMAIL}}</email>
+  </author>
+  <icon>https://mulligans-grille.com/assets/images/favicon-32x32.png</icon>
+  <logo>https://mulligans-grille.com/assets/images/og-default.jpg</logo>
+
+  <!-- Add <entry> blocks per news article -->
+  <!--
+  <entry>
+    <title>Example post title</title>
+    <link href="https://mulligans-grille.com/example-post/" />
+    <id>https://mulligans-grille.com/example-post/</id>
+    <updated>2026-05-17T00:00:00Z</updated>
+    <summary>Short summary of the post.</summary>
+  </entry>
+  -->
+</feed>

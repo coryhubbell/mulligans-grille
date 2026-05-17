@@ -1,0 +1,1070 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGE-SERVICE.CSS — Service page styles
+   Mulligan's Grille
+   Used by: voiceover-recording, adr-recording, audio-mixing, audiobook-production,
+            remote-session-engineering, voice-over-demos
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════
+   ZONE 2: HERO — Minimal header + full-bleed image
+   ═══════════════════════════════════════ */
+.z2-hero-header {
+  background: #1a1418;
+  padding: 28px 24px 20px;
+  text-align: center;
+}
+
+.z2-hero-header h1 {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-weight: 700;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0;
+  animation: fadeUp 0.6s 0.1s var(--ease-out) both;
+}
+
+.z2-hero-image {
+  position: relative;
+  line-height: 0;
+  overflow: hidden;
+}
+
+.z2-hero-image img {
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  display: block;
+  animation: fadeIn 0.8s 0.2s var(--ease-out) both;
+}
+
+.z2-hero-image .z2-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24px 24px 28px;
+  background: rgba(0, 0, 0, 0.80);
+  text-align: center;
+  animation: fadeUp 0.8s 0.5s var(--ease-out) both;
+}
+
+.z2-hero-image .z2-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
+  max-width: 600px;
+  margin: 0 auto 16px;
+  line-height: 1.6;
+}
+
+.z2-hero-image .z2-hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 2: HERO — Full-height variant (remote sessions)
+   ═══════════════════════════════════════ */
+.z2-hero {
+  position: relative;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: url('/assets/images/Ctrl-A-VO-1.png') center/cover no-repeat;
+}
+
+.z2-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('/assets/images/Ctrl-A-VO-1.png') center/cover no-repeat;
+}
+
+.z2-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26, 20, 24, 0.85), rgba(127, 63, 151, 0.4));
+}
+
+.z2-hero .z2-content {
+  position: relative;
+  z-index: 2;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 60px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.z2-hero .z2-text-backdrop {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 40px 48px 36px;
+  border-radius: 16px;
+  max-width: 720px;
+}
+
+.z2-hero .z2-text-backdrop h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 16px 0;
+}
+
+.z2-hero .z2-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.7;
+  margin: 0 0 24px 0;
+}
+
+.z2-hero .z2-hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.z2-hero .z2-tpn-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  height: 64px;
+  width: auto;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 3: BUTTER ZONE — Entity declaration
+   ═══════════════════════════════════════ */
+.z3-butter {
+  position: relative;
+  background: #FFFFFF;
+  border-top: 1px solid var(--brand-border);
+  border-bottom: 1px solid var(--brand-border);
+  padding: 60px 0;
+}
+
+.z3-inner {
+  /* Inherits from shared.css base .zX-inner rules */
+}
+
+.z3-entity-declaration {
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  color: var(--brand-text);
+  line-height: 1.8;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.z3-entity-declaration strong {
+  color: var(--brand-text-bright);
+  font-weight: 600;
+}
+
+.z3-section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--brand-text-bright);
+  margin: 48px 0 32px 0;
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 3: WHY THIS PRICE — VO Demos page
+   ═══════════════════════════════════════ */
+.z3-why-price {
+  background: var(--brand-purple);
+  padding: 48px 0;
+}
+
+.z3-why-price-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.z3-why-price h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.z3-why-price p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+
+.z3-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.z3-step {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  padding: 28px 24px;
+  position: relative;
+}
+
+.z3-step-number {
+  position: absolute;
+  top: -16px;
+  left: 24px;
+  width: 32px;
+  height: 32px;
+  background: var(--brand-purple);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.z3-step h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brand-text-bright);
+  margin: 0 0 12px 0;
+}
+
+.z3-step p {
+  font-size: 14px;
+  color: var(--brand-text);
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 5: SOCIAL PROOF — Reviews grid
+   ═══════════════════════════════════════ */
+.z5-reviews {
+  position: relative;
+  padding: 40px 0;
+  background: var(--brand-dark);
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.z5-inner {
+  /* Inherits from shared.css base .zX-inner rules */
+}
+
+.z5-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.z5-section-heading {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--brand-text-bright);
+  margin: 0;
+}
+
+.z5-rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.z5-rating-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-text-bright);
+  line-height: 1;
+}
+
+.z5-stars {
+  color: #FBBC04;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.z5-review-count {
+  font-size: 12px;
+  color: var(--brand-muted);
+}
+
+.z5-google-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--brand-muted);
+}
+
+.z5-google-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234285F4' d='M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z'/%3E%3Cpath fill='%2334A853' d='M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z'/%3E%3Cpath fill='%23FBBC05' d='M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z'/%3E%3Cpath fill='%23EA4335' d='M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.z5-reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.z5-review-card {
+  padding: 16px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  border: 1px solid var(--brand-border);
+}
+
+.z5-review-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.z5-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--brand-purple);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.z5-review-author {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-text-bright);
+}
+
+.z5-review-role {
+  font-size: 12px;
+  color: var(--brand-muted);
+}
+
+.z5-review-stars {
+  color: #FBBC04;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.z5-review-text {
+  font-size: 12px;
+  color: var(--brand-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.z5-review-footer {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.z5-review-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-purple);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.z5-review-link:hover {
+  color: var(--brand-orange);
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 4: CAPABILITIES — Feature list with icons
+   ═══════════════════════════════════════ */
+.z4-capabilities {
+  padding: 80px 0;
+  background: var(--brand-dark);
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.z4-inner {
+  /* Inherits from shared.css base .zX-inner rules */
+}
+
+.z4-inner > h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--brand-text-bright);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.z4-inner > p {
+  font-size: 16px;
+  color: var(--brand-text);
+  line-height: 1.8;
+  max-width: 820px;
+  margin: 0 auto 16px;
+  text-align: center;
+}
+
+.z4-inner > p:last-child {
+  margin-bottom: 0;
+}
+
+.z4-section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--brand-text-bright);
+  margin-bottom: 12px;
+}
+
+.z4-section-sub {
+  font-size: 15px;
+  color: var(--brand-muted);
+  margin-bottom: 48px;
+  max-width: 600px;
+}
+
+.z4-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.z4-feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.z4-feature-list li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.z4-feature-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--brand-surface-2);
+  border: 1px solid var(--brand-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.z4-feature-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--brand-purple);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.z4-feature-text h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brand-text-bright);
+  margin: 0 0 6px 0;
+}
+
+.z4-feature-text p {
+  font-size: 14px;
+  color: var(--brand-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.z4-booth-image {
+  position: relative;
+}
+
+.z4-booth-image img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.z4-booth-caption {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--brand-muted);
+}
+
+.z4-booth-caption strong {
+  color: var(--brand-text-bright);
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 6: CREDITS WALL
+   ═══════════════════════════════════════ */
+.z6-credits {
+  padding: 80px 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.z6-credits-inner {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  text-align: center;
+}
+
+.z6-credits-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--brand-text-bright);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.z6-credits-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.z6-credits-wall a {
+  flex: 0 1 200px;
+  max-width: 250px;
+}
+
+.z6-credits-wall img {
+  width: 100%;
+  display: block;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.z6-credits-wall img:hover {
+  transform: scale(1.03);
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 6: PRICING — Rate cards
+   ═══════════════════════════════════════ */
+.z6-pricing {
+  padding: 80px 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.z6-inner {
+  /* Inherits from shared.css base .zX-inner rules */
+}
+
+.z6-section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--brand-text-bright);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.z6-section-sub {
+  font-size: 15px;
+  color: var(--brand-muted);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.z6-price-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 700px;
+  margin: 0 auto 32px;
+}
+
+.z6-price-card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-border);
+  border-radius: 12px;
+  padding: 32px 28px;
+  text-align: center;
+}
+
+.z6-price-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brand-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.z6-price-value {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--brand-text-bright);
+  line-height: 1;
+}
+
+.z6-price-unit {
+  font-size: 14px;
+  color: var(--brand-muted);
+  margin-bottom: 16px;
+}
+
+.z6-price-desc {
+  font-size: 14px;
+  color: var(--brand-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.z6-price-note {
+  font-size: 14px;
+  color: var(--brand-muted);
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.z6-price-note a {
+  color: var(--brand-purple);
+  font-weight: 500;
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 7: FAQ — Question/Answer list
+   ═══════════════════════════════════════ */
+.z7-content {
+  padding: 80px 0;
+  background: var(--brand-dark);
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.z7-inner {
+  /* Inherits from shared.css base .zX-inner rules */
+}
+
+.z7-faq-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  color: var(--brand-text-bright);
+  margin-bottom: 32px;
+}
+
+.z7-faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.z7-faq-item {
+  border-bottom: 1px solid var(--brand-border);
+  padding: 24px 0;
+}
+
+.z7-faq-item:first-child {
+  padding-top: 0;
+}
+
+.z7-faq-question {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--brand-text-bright);
+  margin: 0 0 12px 0;
+}
+
+.z7-faq-answer {
+  font-size: 14px;
+  color: var(--brand-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.z7-faq-answer a {
+  color: var(--brand-purple);
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 3B: RELATED SERVICES — Contextual cross-links
+   ═══════════════════════════════════════ */
+.z3b-related-services {
+  padding: 48px 0;
+  background: var(--brand-surface);
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.z3b-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.z3b-contextual {
+  font-size: clamp(0.95rem, 1.2vw, 1rem);
+  color: var(--brand-text);
+  line-height: 1.8;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.z3b-contextual a {
+  color: var(--brand-purple);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.z3b-contextual a:hover {
+  color: var(--brand-purple-dim);
+  border-bottom-color: var(--brand-purple-dim);
+}
+
+@media (max-width: 768px) {
+  .z3b-related-services {
+    padding: 36px 0;
+  }
+
+  .z3b-inner {
+    padding: 0 16px;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 8: CTA
+   ═══════════════════════════════════════ */
+.z8-cta {
+  position: relative;
+  padding: 80px 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 50%, rgba(127, 63, 151, 0.15), transparent),
+    var(--brand-purple-dim);
+  text-align: center;
+}
+
+.z8-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.z8-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.z8-subtext {
+  font-size: 16px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.z8-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.z8-actions .btn-primary {
+  border-color: var(--brand-orange);
+  color: var(--brand-orange);
+  background: transparent;
+}
+
+.z8-actions .btn-primary:hover {
+  background: var(--brand-orange);
+  color: #FFFFFF !important;
+}
+
+.z8-actions .btn-outline {
+  color: rgba(255,255,255,0.5);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.z8-actions .btn-outline:hover {
+  background: var(--brand-purple);
+  border-color: var(--brand-purple);
+  color: #FFFFFF !important;
+}
+
+.z8-contact-line {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+}
+
+.z8-contact-line a {
+  color: #FFFFFF;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.z8-contact-line a:hover {
+  color: var(--brand-orange);
+}
+
+
+/* ═══════════════════════════════════════
+   ZONE 7: RELATED PROJECTS — Portfolio items cross-links
+   ═══════════════════════════════════════ */
+.z7-related {
+  padding: 60px 0;
+  background: var(--brand-dark);
+  border-bottom: 1px solid var(--brand-border);
+}
+
+.z7-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.z7-related h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--brand-text-bright);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.z7-related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.z7-related-card {
+  background: #FFFFFF;
+  border: 1px solid var(--brand-border);
+  border-radius: 8px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+}
+
+.z7-related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.z7-related-card img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+
+.z7-related-card-body {
+  padding: 16px;
+}
+
+.z7-related-card-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-text-bright);
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.z7-related-card-service {
+  font-size: 12px;
+  color: var(--brand-muted);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .z7-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .z7-related-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   SERVICE PAGE RESPONSIVE
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .z2-hero-header {
+    padding: 20px 16px 16px;
+  }
+
+  .z2-hero-header h1 {
+    font-size: 16px;
+  }
+
+  .z2-hero .z2-content {
+    padding: 40px 16px;
+  }
+
+  .z2-hero .z2-text-backdrop {
+    padding: 28px 24px 24px;
+  }
+
+  .z2-hero .z2-tpn-badge {
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .z3-inner {
+    /* Uses base responsive padding from shared.css */
+  }
+
+  .z3-steps {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .z3-why-price {
+    padding: 36px 0;
+  }
+
+  .z3-why-price-inner {
+    padding: 0 16px;
+  }
+
+  .z4-inner {
+    /* Uses base responsive padding from shared.css */
+  }
+
+  .z4-two-col {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .z4-booth-image {
+    order: -1;
+  }
+
+  .z5-inner {
+    /* Uses base responsive padding from shared.css */
+  }
+
+  .z5-reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .z6-inner {
+    /* Uses base responsive padding from shared.css */
+  }
+
+  .z6-price-grid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+  }
+
+  .z7-inner {
+    /* Uses base responsive padding from shared.css */
+  }
+
+  .z8-inner {
+    padding: 0 24px;
+  }
+
+  .z6-credits-inner {
+    padding: 0 16px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+  .z2-hero-header h1 {
+    font-size: 14px;
+  }
+
+  .z3-why-price {
+    padding: 28px 0;
+  }
+
+  .z3-why-price p {
+    font-size: 15px;
+  }
+
+  .z5-reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .z8-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .z8-actions .btn-primary,
+  .z8-actions .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .z8-actions .btn-primary {
+    background: var(--brand-orange);
+    color: #FFFFFF !important;
+  }
+
+}

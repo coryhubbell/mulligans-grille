@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rtk ls *)",
+      "Bash(gh api *)",
+      "Bash(rtk gh *)",
+      "Read(//Users/coryhubbell/Desktop/Code Projects/Silenthubb Framework/**)",
+      "Bash(rtk git *)",
+      "Bash(/Users/coryhubbell/Desktop/Code Projects/Silenthubb Framework/bin/silenthubb-init.sh mulligans-grille *)",
+      "Bash(mkdir -p \"/Users/coryhubbell/Desktop/Code Projects/mulligans-grille/_handoff\")",
+      "Bash(mv \"/Users/coryhubbell/Desktop/Code Projects/mulligansgrille/\"*.md \"/Users/coryhubbell/Desktop/Code Projects/mulligans-grille/_handoff/\")",
+      "Bash(mv \"/Users/coryhubbell/Desktop/Code Projects/mulligansgrille/.claude\" \"/Users/coryhubbell/Desktop/Code Projects/mulligans-grille/_handoff/.claude-from-handoff\")"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline · Mulligan's Grille</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+<link rel="stylesheet" href="/assets/css/shared.css">
+<style>
+  .off-wrap {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .off-inner { max-width: 520px; }
+  .off-icon { font-size: 64px; margin-bottom: 16px; }
+  .off-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--brand-text-bright);
+    margin: 0 0 12px;
+  }
+  .off-body {
+    font-size: 16px;
+    color: var(--brand-muted);
+    line-height: 1.6;
+    margin: 0 0 24px;
+  }
+</style>
+</head>
+<body>
+<main class="off-wrap">
+  <div class="off-inner">
+    <div class="off-icon">📡</div>
+    <h1 class="off-title">You're offline</h1>
+    <p class="off-body">Mulligan's Grille requires a connection to load. Check your network and try again — pages you've visited recently may still load from cache.</p>
+    <a href="/" class="btn-primary">Try again</a>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,161 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# Mulligan's Grille - Apache Configuration
+# Cloudways Static Site Deployment
+# Framework: Silenthubb
+# ═══════════════════════════════════════════════════════════════════════════
+
+# ───────────────────────────────────────────────────────────────────────────
+# Security Headers
+# ───────────────────────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Prevent MIME type sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # Prevent clickjacking
+  Header set X-Frame-Options "DENY"
+
+  # Enable XSS filter in browsers
+  Header set X-XSS-Protection "1; mode=block"
+
+  # Referrer policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # HTTP Strict Transport Security (HSTS) - 1 year, include subdomains
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+  # Content Security Policy
+  # Add project-specific domains as needed (analytics, video embeds, fonts CDN, etc.)
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.google.com https://www.youtube.com https://player.vimeo.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://cloudflareinsights.com; base-uri 'self'; form-action 'self'"
+
+  # Cross-Origin Opener Policy
+  Header set Cross-Origin-Opener-Policy "same-origin"
+
+  # Permissions Policy (formerly Feature-Policy)
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+</IfModule>
+
+# ───────────────────────────────────────────────────────────────────────────
+# Caching - Static Assets
+# ───────────────────────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # CSS and JavaScript - 1 year (immutable assets)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # Images - 1 year
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Fonts - 1 year
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+
+  # HTML - no caching (always fetch fresh)
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # CSS/JS - immutable caching
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Images - long-term caching
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Fonts - long-term caching
+  <FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML - no caching
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+
+# ───────────────────────────────────────────────────────────────────────────
+# Compression
+# ───────────────────────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ───────────────────────────────────────────────────────────────────────────
+# URL Redirects - Old WordPress URLs to new structure
+# ───────────────────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Force HTTPS (check X-Forwarded-Proto for reverse proxy environments like Cloudways)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # PROJECT-SPECIFIC REDIRECTS
+  # Add 301s for legacy / renamed / typo slugs as the project evolves.
+  # Pattern: RewriteRule ^old-slug/?$ /new-slug/ [R=301,L]
+  # ─────────────────────────────────────────────────────────────────────────
+  # RewriteRule ^old-slug/?$ /new-slug/ [R=301,L]
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # Directory Structure - Add trailing slash to directory URLs
+  # ─────────────────────────────────────────────────────────────────────────
+  # Redirect /slug (no trailing slash) to /slug/ for directories
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ $1/ [R=301,L]
+</IfModule>
+
+# ───────────────────────────────────────────────────────────────────────────
+# Directory Index - Serve index.html from directories
+# ───────────────────────────────────────────────────────────────────────────
+DirectoryIndex index.html
+
+# ───────────────────────────────────────────────────────────────────────────
+# Error Documents
+# ───────────────────────────────────────────────────────────────────────────
+ErrorDocument 404 /404.html
+
+# ───────────────────────────────────────────────────────────────────────────
+# Disable Directory Browsing
+# ───────────────────────────────────────────────────────────────────────────
+Options -Indexes
+
+# ───────────────────────────────────────────────────────────────────────────
+# Block Access to Sensitive Files
+# ───────────────────────────────────────────────────────────────────────────
+# Block sensitive dotfiles, but allow .well-known for SSL/verification
+<FilesMatch "^\.(?!well-known)">
+  Require all denied
+</FilesMatch>
+
+# Block sensitive files, but allow manifest.json for PWA
+<FilesMatch "^(?!manifest\.json$).*\.(md|json|yml|yaml|log|bak|sql|sh)$">
+  Require all denied
+</FilesMatch>
+
+# IndexNow key file - allow access to hex key verification files
+<FilesMatch "^[a-f0-9]{8,128}\.txt$">
+  Require all granted
+</FilesMatch>

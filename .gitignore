@@ -1,0 +1,30 @@
+# Environment & secrets
+.env
+.env.local
+*.key
+*.pem
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Dependencies
+node_modules/
+
+# Backups & temp
+*.bak
+*.tmp
+*.log
+*-backup-*.html
+*.[0-9].html
+
+# Claude Code local state (do NOT commit user-specific permissions)
+.claude/settings.local.json
+
+# Build output (if any)
+dist/
+.cache/

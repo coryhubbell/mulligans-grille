@@ -1,0 +1,27 @@
+{
+  "name": "Mulligan's Grille",
+  "short_name": "Mulligan's Grille",
+  "description": "Mulligan's Grille — Wings, burgers, cold beer, good people.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1410",
+  "theme_color": "#1a1410",
+  "icons": [
+    {
+      "src": "/assets/images/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

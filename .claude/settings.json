@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/*)",
+      "Bash(node scripts/lint-schema.js:*)",
+      "Bash(node scripts/dev-server.js:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git fetch:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh run:*)",
+      "Bash(gh api:*)",
+      "Bash(curl:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(echo:*)",
+      "Bash(sed:*)",
+      "Bash(awk:*)",
+      "WebFetch(domain:mulligans-grille.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:pagespeed.web.dev)",
+      "WebFetch(domain:csp-evaluator.withgoogle.com)"
+    ],
+    "deny": []
+  }
+}
