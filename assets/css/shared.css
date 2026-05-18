@@ -89,6 +89,18 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 picture { display: contents; }
 
+/* Sentinel — see initScrollHeader in main.js. Placed at y=60 in the document
+   so IntersectionObserver flips .is-scrolled when scrolled past 60px,
+   eliminating the per-scroll window.scrollY read (forced reflow). */
+#header-sentinel {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
 a {
   color: var(--green-deep);
   text-decoration: none;

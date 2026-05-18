@@ -95,6 +95,7 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--font-body);font-size:var(--text-base);line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 picture{display:contents}
+#header-sentinel{position:absolute;top:60px;left:0;width:1px;height:1px;pointer-events:none}
 a{color:var(--green-deep);text-decoration:none}
 button{font:inherit;cursor:pointer}
 .z1-header{position:fixed;inset:0 0 auto 0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
@@ -498,6 +499,10 @@ button{font:inherit;cursor:pointer}
 </script>
 </head>
 <body>
+
+<!-- Sentinel observed by IntersectionObserver to set .is-scrolled on the
+     header without per-scroll layout reads. Sits at y=60px in the document. -->
+<div id="header-sentinel" aria-hidden="true"></div>
 
 <!-- ═══ Z1: Sticky Nav ═══════════════════════════════════════ -->
 <header class="z1-header" id="site-header" data-zone="Z1-header">

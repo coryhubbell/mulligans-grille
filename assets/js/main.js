@@ -39,9 +39,21 @@
     var header = document.getElementById('site-header');
     if (!header) return;
 
+    var sentinel = document.getElementById('header-sentinel');
+    if (sentinel && 'IntersectionObserver' in window) {
+      // Sentinel sits at y=60 in the document. While it intersects the
+      // viewport, the page is near the top; when it leaves, we've scrolled
+      // past — no scroll listener, no layout read.
+      var io = new IntersectionObserver(function (entries) {
+        header.classList.toggle('is-scrolled', !entries[0].isIntersecting);
+      });
+      io.observe(sentinel);
+      return;
+    }
+
+    // Fallback for very old browsers — rAF-throttled scroll listener
     var scrolled = false;
     var ticking = false;
-
     function update() {
       ticking = false;
       var next = window.scrollY > 60;
@@ -49,7 +61,6 @@
       scrolled = next;
       header.classList.toggle('is-scrolled', scrolled);
     }
-
     function onScroll() {
       if (ticking) return;
       ticking = true;
