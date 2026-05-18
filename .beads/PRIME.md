@@ -70,7 +70,7 @@ These constraints are NON-NEGOTIABLE. Violating them will cause performance degr
 - **Repo root HTML:** `index.html` plus `<slug>/index.html` directories per page
 - **Deploy config:** `.htaccess` (Apache headers/caching/redirects), `.github/workflows/deploy.yml.disabled`
 - **LLM/AI strategy:** `llms.txt`, `feed.xml`, `sitemap.xml`, `robots.txt`
-- **Service worker:** `sw.js` — network-first for HTML, cache-first for `/assets/*`
+- **Service worker:** retired. `sw.js` is a self-destruct shim (unregisters + purges caches on activate); `main.js` does not register a SW. Cache freshness is owned by `.htaccess` + Cloudflare/Varnish.
 - **Schema validator:** `scripts/lint-schema.js`
 
 ## Propulsion Principle

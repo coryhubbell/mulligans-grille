@@ -89,5 +89,5 @@ Or `/schema-lint`. Fails CI if any JSON-LD block doesn't parse.
 
 - **Trailing slash matters** — `/services/` is canonical, `/services` 301-redirects (Apache rule). The dev server mirrors this.
 - **`.htaccess` caching is aggressive** — CSS/JS get 1-year `immutable`. When you edit them in production, append a version query string (`?v=20260507`) to the `<link>` href so browsers fetch the new file.
-- **Service worker caches `/`** — bump `CACHE_VERSION` in `sw.js` after major homepage changes to force cache invalidation.
+- **Service worker is retired** — `sw.js` is a self-destruct shim that unregisters any existing SW and purges its caches, and `main.js` no longer calls `register()`. HTML/CSS/JS cache freshness is driven entirely by `.htaccess` headers + Cloudflare/Varnish.
 - **Cloudflare email obfuscation** — if you see `[email&nbsp;protected]` instead of an address, Cloudflare is mangling it. Disable Email Address Obfuscation in Scrape Shield.

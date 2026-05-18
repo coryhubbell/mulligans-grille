@@ -1,6 +1,6 @@
 /**
  * Mulligan's Grille — main.js
- * Mobile nav, scroll header state, today highlight, reveal-on-scroll, footer year, SW.
+ * Mobile nav, scroll header state, today highlight, reveal-on-scroll, footer year, SW cleanup.
  */
 (function () {
   'use strict';
@@ -104,20 +104,15 @@
     });
   }
 
-  function registerServiceWorker() {
+  function cleanupServiceWorker() {
+    // Service worker was retired — sw.js is now a self-destruct shim. As a
+    // belt-and-suspenders backup, also unregister from the client side so
+    // any user whose browser doesn't pick up the new sw.js still loses the
+    // stale-cache flash on their next visit.
     if (!('serviceWorker' in navigator)) return;
-    // Skip SW on localhost / 127.0.0.1 — keeps local dev free of stale caches
-    var host = location.hostname;
-    if (host === 'localhost' || host === '127.0.0.1' || host.endsWith('.local')) {
-      // Also unregister any existing SW from a prior session so refreshes hit disk
-      navigator.serviceWorker.getRegistrations().then(function (regs) {
-        regs.forEach(function (reg) { reg.unregister(); });
-      }).catch(function () {});
-      return;
-    }
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js').catch(function () { /* noop */ });
-    });
+    navigator.serviceWorker.getRegistrations().then(function (regs) {
+      regs.forEach(function (reg) { reg.unregister(); });
+    }).catch(function () { /* noop */ });
   }
 
   function initScrollTop() {
@@ -164,7 +159,7 @@
     initReveals();
     initScrollTop();
     updateFooterYear();
-    registerServiceWorker();
+    cleanupServiceWorker();
   }
 
   if (document.readyState === 'loading') {
