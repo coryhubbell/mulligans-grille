@@ -39,6 +39,19 @@ Settings that *must* hold (regression-prone):
 | AI Crawl Control | GPTBot / ClaudeBot / PerplexityBot / Google-Extended **Allowed** | Same reason |
 | HTML cache TTL | ≤ 1 hour (or use `/purge-cache` after deploys) | So updates propagate |
 
+## Cache layers cheat sheet
+
+There are **four** independent caches sitting in front of a request to `/`:
+
+1. **Browser cache** — driven by `.htaccess` (`*.html` is `no-cache, no-store`; `*.css|*.js` is `max-age=31536000, immutable`).
+2. **Cloudflare edge** — `cf-cache-status` should be `DYNAMIC` for HTML, `HIT` for assets. Purge from CF dashboard or the `/purge-cache` skill.
+3. **Cloudways Varnish** — reports as `x-cache: HIT/MISS` with an `age:` header. Caches HTML by default. Purge from **Cloudways panel → Application → Application Settings → Purge Varnish Cache**, or via the `cloudways__app_purge_cache` MCP tool.
+4. **Service worker** — **retired** (see `sw.js`). The file remains as a self-destruct shim for legacy clients; new visitors get no SW. Do not reintroduce a fetch-intercepting SW without solving cache versioning first — the previous one caused fresh HTML to load against stale CSS/JS and forced hard-refreshes on every deploy.
+
+**Rule of thumb after every deploy:** Cloudways Pull Latest Code → purge Varnish → (optionally) purge Cloudflare. If you skip the Varnish purge, expect 1–30 minutes of stale HTML at the edge depending on Varnish TTL.
+
+**Long-term option:** in the Cloudways app settings, exclude `*.html` and `/` from Varnish so deploys propagate without a manual purge step. Trade-off is a small TTFB hit on HTML.
+
 ## Per-deploy workflow
 
 ### Manual
