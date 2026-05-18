@@ -39,11 +39,23 @@
     var header = document.getElementById('site-header');
     if (!header) return;
 
-    function onScroll() {
-      if (window.scrollY > 60) header.classList.add('is-scrolled');
-      else header.classList.remove('is-scrolled');
+    var scrolled = false;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var next = window.scrollY > 60;
+      if (next === scrolled) return;
+      scrolled = next;
+      header.classList.toggle('is-scrolled', scrolled);
     }
-    onScroll();
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+    update();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
@@ -103,18 +115,35 @@
     if (!btn || !footer) return;
     btn.hidden = false;
 
-    function onScroll() {
-      var footerTop = footer.getBoundingClientRect().top;
-      if (footerTop <= window.innerHeight) btn.classList.add('is-visible');
-      else btn.classList.remove('is-visible');
-    }
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-
     btn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
+
+    // IntersectionObserver avoids per-scroll getBoundingClientRect() reads
+    // (forced reflow). Button becomes visible as the footer enters viewport.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        btn.classList.toggle('is-visible', entries[0].isIntersecting);
+      });
+      io.observe(footer);
+      return;
+    }
+
+    // Fallback: rAF-throttled scroll listener for very old browsers
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var footerTop = footer.getBoundingClientRect().top;
+      btn.classList.toggle('is-visible', footerTop <= window.innerHeight);
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
   }
 
   function init() {

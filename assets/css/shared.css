@@ -87,6 +87,7 @@ body {
 }
 
 img { max-width: 100%; height: auto; display: block; }
+picture { display: contents; }
 
 a {
   color: var(--green-deep);
