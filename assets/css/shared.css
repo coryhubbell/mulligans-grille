@@ -88,6 +88,11 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 picture { display: contents; }
+/* picture > source gets blockified into a grid/flex item when picture is
+   display:contents — without this override it claims a column and breaks
+   parent grid templates (UA display:none isn't enough to win against the
+   grid-item blockification). */
+picture > source { display: none; }
 
 /* Sentinel — see initScrollHeader in main.js. Placed at y=60 in the document
    so IntersectionObserver flips .is-scrolled when scrolled past 60px,
@@ -162,14 +167,14 @@ p { font-family: var(--font-body); }
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--bg-dark);
   margin-bottom: 1rem;
 }
 .eyebrow::before {
   content: "";
   width: 24px;
   height: 1.5px;
-  background: var(--green);
+  background: var(--green-deep);
   display: inline-block;
 }
 

@@ -99,6 +99,7 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{font-family:var(--font-body);font-size:var(--text-base);line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 picture{display:contents}
+picture>source{display:none}
 #header-sentinel{position:absolute;top:60px;left:0;width:1px;height:1px;pointer-events:none}
 a{color:var(--green-deep);text-decoration:none}
 button{font:inherit;cursor:pointer}
@@ -908,8 +909,16 @@ button{font:inherit;cursor:pointer}
     <a href="sms:+13863436665" class="vip-number" aria-label="Text (386) 343-6665 to opt in">
       <span class="vip-number-label">Text to join</span>
       <span class="vip-number-digits">(386) 343-6665</span>
-      <span class="vip-number-fine">Msg rates may apply · no spam</span>
     </a>
+
+    <p class="vip-consent">
+      By texting (386) 343-6665, you consent to receive recurring SMS or MMS marketing messages from
+      Mulligan&rsquo;s Grille at the phone number provided. Consent is not a condition of purchase.
+      Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to
+      unsubscribe or <strong>HELP</strong> for help.
+      View our <a href="/legal/#privacy">Privacy Policy</a> and
+      <a href="/legal/#terms">Terms of Service</a>.
+    </p>
   </div>
 </section>
 
@@ -1038,6 +1047,11 @@ button{font:inherit;cursor:pointer}
         <div class="z9-social">
           <a href="https://www.facebook.com/profile.php?id=61588425839792" target="_blank" rel="noopener">Facebook</a>
         </div>
+        <h4 style="margin-top:1.25rem">Legal</h4>
+        <ul>
+          <li><a href="/legal/#privacy">Privacy Policy</a></li>
+          <li><a href="/legal/#terms">Terms of Service</a></li>
+        </ul>
       </div>
     </div>
     <p class="z9-bottom">&copy; <span class="js-footer-year">2026</span> Mulligan&rsquo;s Grille · Port Orange, FL · Take a mulligan whenever you need one.</p>
