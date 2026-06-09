@@ -546,7 +546,7 @@ section { padding-block: var(--section-padding); }
   transition: filter 0.3s var(--ease-out);
 }
 .z9-logo-link:hover img {
-  filter: drop-shadow(0 0 12px var(--green-neon)) drop-shadow(0 0 28px rgba(43, 232, 99, 0.55));
+  filter: brightness(1.25) contrast(1.2) saturate(1.15);
 }
 
 .z9-cols {
@@ -575,6 +575,24 @@ section { padding-block: var(--section-padding); }
 }
 .z9-cols address a { color: var(--text-muted-on-dark); }
 .z9-cols address a:hover { color: var(--green-neon); }
+
+.z9-addr-link,
+.z9-tel-link {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+}
+.z9-tel-link {
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.z9-addr-link svg,
+.z9-tel-link svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+.z9-addr-link svg { margin-top: 0.2em; }
 
 .z9-cols ul {
   list-style: none;
