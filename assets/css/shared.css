@@ -64,6 +64,10 @@
   --container-wide:  1320px;
   --gutter:          clamp(1.25rem, 4vw, 2.5rem);
   --section-padding: clamp(5.5rem, 10vw, 8rem);
+
+  /* Header logo height (single source of truth — see .z1-logo img) */
+  --logo-h:        72px;
+  --logo-h-mobile: 52px;
 }
 
 /* ═══════════════════════════════════════
@@ -301,11 +305,21 @@ section { padding-block: var(--section-padding); }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  transition: box-shadow 0.3s var(--ease-out);
+  transition: transform 0.45s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
 
 .z1-header.is-scrolled {
   box-shadow: var(--shadow-sm);
+}
+
+/* Slide the bar up out of view on scroll-down (toggled by initScrollHeader) */
+.z1-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+/* Never hide while the mobile menu is open (header is the nav's containing block) */
+.z1-header.is-nav-open.is-hidden {
+  transform: none;
 }
 
 .z1-inner {
@@ -314,7 +328,7 @@ section { padding-block: var(--section-padding); }
   gap: 1.5rem;
   max-width: var(--container);
   margin-inline: auto;
-  padding: 0.9rem var(--gutter);
+  padding: 10px;
 }
 
 .z1-logo {
@@ -326,7 +340,7 @@ section { padding-block: var(--section-padding); }
   margin-right: auto;
 }
 .z1-logo img {
-  height: 88px;
+  height: var(--logo-h);
   width: auto;
 }
 
@@ -392,8 +406,15 @@ section { padding-block: var(--section-padding); }
   color: #fff;
 }
 .z1-phone-icon {
-  font-size: 1.05em;
+  display: inline-flex;
   line-height: 1;
+}
+.z1-phone-icon svg {
+  width: 1.05em;
+  height: 1.05em;
+  display: block;
+  /* Inherits the CTA's color, so :hover (color:#fff) turns the icon white too */
+  fill: currentColor;
 }
 
 .z1-mobile-toggle {
@@ -412,35 +433,24 @@ section { padding-block: var(--section-padding); }
   transition: transform 0.3s var(--ease-out), opacity 0.2s var(--ease-out);
   border-radius: 999px;
 }
-.z1-header.is-nav-open .z1-mobile-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.z1-header.is-nav-open .z1-mobile-toggle span:nth-child(2) { opacity: 0; }
-.z1-header.is-nav-open .z1-mobile-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* Closed → hamburger bars; open → dedicated X (the toggle is top-right, z 100). */
+.z1-mobile-toggle .z1-x {
+  display: none;
+  width: 26px;
+  height: 26px;
+}
+.z1-mobile-toggle .z1-x svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: var(--ink);
+}
+.z1-header.is-nav-open .z1-mobile-toggle span { display: none; }
+.z1-header.is-nav-open .z1-mobile-toggle .z1-x { display: block; }
 
-@media (max-width: 820px) {
+@media (max-width: 1024px) {
   .z1-mobile-toggle { display: flex; }
-  .z1-logo img { height: 68px; }
-
-  /* Compact phone CTA — icon only on mobile so it fits beside the hamburger */
-  .z1-phone-cta {
-    padding: 0.5rem;
-    width: 40px;
-    height: 40px;
-    justify-content: center;
-    border-radius: 50%;
-  }
-  .z1-phone-icon { font-size: 1.15rem; }
-  .z1-phone-text {
-    /* visually hidden, still in the a11y tree */
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
+  .z1-logo img { height: var(--logo-h-mobile); }
 
   .z1-nav {
     position: fixed;
@@ -470,6 +480,31 @@ section { padding-block: var(--section-padding); }
   .z1-header.is-nav-open .z1-nav { transform: translateY(0); }
 }
 
+@media (max-width: 720px) {
+  /* Phones — compact the phone CTA to an icon-only circle so it fits beside
+     the hamburger. Tablets and desktop keep the full pill with the number. */
+  .z1-phone-cta {
+    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    border-radius: 50%;
+  }
+  .z1-phone-icon svg { width: 1.15rem; height: 1.15rem; }
+  .z1-phone-text {
+    /* visually hidden, still in the a11y tree */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
 /* ═══════════════════════════════════════
    ZONE 9 — FOOTER
    ═══════════════════════════════════════ */
@@ -496,29 +531,28 @@ section { padding-block: var(--section-padding); }
   padding-inline: var(--gutter);
 }
 
-.z9-brand {
+.z9-logo-col {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  align-items: flex-start;
 }
-.z9-brand img {
-  width: 64px;
-  height: 64px;
+.z9-logo-link {
+  display: inline-block;
+  line-height: 0;
+}
+.z9-logo-link img {
+  width: 170px;
+  height: 170px;
   object-fit: contain;
+  transition: filter 0.3s var(--ease-out);
 }
-.z9-brand h3 {
-  font-family: var(--font-script);
-  text-transform: none;
-  font-weight: 400;
-  font-size: 2.25rem;
-  color: #fff;
-  line-height: 1;
+.z9-logo-link:hover img {
+  filter: drop-shadow(0 0 12px var(--green-neon)) drop-shadow(0 0 28px rgba(43, 232, 99, 0.55));
 }
 
 .z9-cols {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: 0.9fr 1.3fr 1fr 1fr;
+  align-items: start;
   gap: 3rem;
   margin-bottom: 3rem;
 }
@@ -571,6 +605,7 @@ section { padding-block: var(--section-padding); }
 
 @media (max-width: 720px) {
   .z9-cols { grid-template-columns: 1fr; gap: 2rem; }
+  .z9-logo-col { justify-content: center; }
 }
 
 /* ═══════════════════════════════════════
@@ -633,4 +668,6 @@ section { padding-block: var(--section-padding); }
     scroll-behavior: auto !important;
   }
   .reveal { opacity: 1; transform: none; }
+  /* Never slide the header out of view when motion is reduced */
+  .z1-header.is-hidden { transform: none; }
 }

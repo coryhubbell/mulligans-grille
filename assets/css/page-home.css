@@ -300,6 +300,85 @@
   text-align: center;
 }
 
+/* ── Story modal (lightbox) ─────────────────────── */
+.story-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+}
+
+.story-modal[hidden] { display: none; }
+
+.story-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  /* dark green, semi-transparent */
+  background: rgba(15, 51, 26, 0.82);
+}
+
+.story-modal__dialog {
+  position: relative;
+  width: min(760px, 100%);
+  max-height: min(80vh, 720px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.story-modal__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: transparent;
+  color: var(--green-deep);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.story-modal__close:hover { background: var(--bg-soft); color: var(--green); }
+.story-modal__close:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+
+.story-modal__scroll {
+  max-height: min(80vh, 720px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+}
+
+.story-modal__scroll h2.script {
+  font-size: clamp(2.25rem, 8vw, 3rem);
+  line-height: 1.05;
+  color: var(--green-deep);
+  margin: 0 0 1.5rem;
+  text-transform: none;
+}
+
+.story-modal__scroll p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+  text-align: left;
+}
+
+.story-modal__scroll p:last-child { margin-bottom: 0; }
+.story-modal__scroll p strong { color: var(--ink); font-weight: 600; }
+
 /* ═══════════════════════════════════════
    ABOUT
    ═══════════════════════════════════════ */

@@ -16,11 +16,14 @@
     function close() {
       header.classList.remove('is-nav-open');
       toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation');
     }
 
     toggle.addEventListener('click', function () {
       var open = header.classList.toggle('is-nav-open');
+      if (open) header.classList.remove('is-hidden'); // reveal a hidden header when opening the menu
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     });
 
     nav.querySelectorAll('a').forEach(function (link) {
@@ -38,6 +41,8 @@
   function initScrollHeader() {
     var header = document.getElementById('site-header');
     if (!header) return;
+
+    initHideOnScroll(header);
 
     var sentinel = document.getElementById('header-sentinel');
     if (sentinel && 'IntersectionObserver' in window) {
@@ -68,6 +73,45 @@
     }
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // Hide-on-scroll-down / show-on-scroll-up. Slides the whole header up out
+  // of view when scrolling down and back in when scrolling up. Gated on
+  // reduced motion, rAF-throttled, suppressed near the top of the page and
+  // while the mobile menu is open.
+  function initHideOnScroll(header) {
+    if (reduceMotion) return;
+
+    var DELTA = 8;        // ignore sub-pixel / jitter scrolls
+    var TOP_GUARD = 120;  // always show within this many px of the top
+    var lastY = window.scrollY || 0;
+    var dirTicking = false;
+
+    function updateDir() {
+      dirTicking = false;
+      var y = window.scrollY || 0;
+
+      // Never hide while the mobile menu is open or near the top.
+      if (header.classList.contains('is-nav-open') || y <= TOP_GUARD) {
+        header.classList.remove('is-hidden');
+        lastY = y;
+        return;
+      }
+
+      var diff = y - lastY;
+      if (Math.abs(diff) < DELTA) return;  // below threshold — keep state
+
+      header.classList.toggle('is-hidden', diff > 0); // down = hide, up = show
+      lastY = y;
+    }
+
+    function onDirScroll() {
+      if (dirTicking) return;
+      dirTicking = true;
+      requestAnimationFrame(updateDir);
+    }
+
+    window.addEventListener('scroll', onDirScroll, { passive: true });
   }
 
   function highlightToday() {
@@ -152,12 +196,60 @@
     window.addEventListener('resize', onScroll, { passive: true });
   }
 
+  function initStoryModal() {
+    var modal = document.getElementById('story-modal');
+    var opener = document.querySelector('[data-story-open]');
+    if (!modal || !opener) return;
+
+    var dialog = modal.querySelector('.story-modal__dialog');
+    var closers = modal.querySelectorAll('[data-story-close]');
+    var lastFocused = null;
+
+    function open() {
+      lastFocused = document.activeElement;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      var firstClose = modal.querySelector('.story-modal__close');
+      if (firstClose) firstClose.focus();
+    }
+
+    function close() {
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    opener.addEventListener('click', open);
+    closers.forEach(function (el) { el.addEventListener('click', close); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) close();
+    });
+
+    // Keep focus inside the dialog while open.
+    modal.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab' || modal.hidden) return;
+      var focusable = dialog.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  }
+
   function init() {
     initMobileNav();
     initScrollHeader();
     highlightToday();
     initReveals();
     initScrollTop();
+    initStoryModal();
     updateFooterYear();
     cleanupServiceWorker();
   }

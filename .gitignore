@@ -24,6 +24,8 @@ node_modules/
 
 # Claude Code local state (do NOT commit user-specific permissions)
 .claude/settings.local.json
+# Handoff-origin local permissions (machine-specific, from prior workspace)
+_handoff/.claude-from-handoff/
 
 # Build output (if any)
 dist/
