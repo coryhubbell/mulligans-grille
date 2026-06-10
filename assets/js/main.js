@@ -196,50 +196,15 @@
     window.addEventListener('resize', onScroll, { passive: true });
   }
 
-  function initStoryModal() {
-    var modal = document.getElementById('story-modal');
-    var opener = document.querySelector('[data-story-open]');
-    if (!modal || !opener) return;
-
-    var dialog = modal.querySelector('.story-modal__dialog');
-    var closers = modal.querySelectorAll('[data-story-close]');
-    var lastFocused = null;
-
-    function open() {
-      lastFocused = document.activeElement;
-      modal.hidden = false;
-      document.body.style.overflow = 'hidden';
-      var firstClose = modal.querySelector('.story-modal__close');
-      if (firstClose) firstClose.focus();
-    }
-
-    function close() {
-      modal.hidden = true;
-      document.body.style.overflow = '';
-      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
-    }
-
-    opener.addEventListener('click', open);
-    closers.forEach(function (el) { el.addEventListener('click', close); });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !modal.hidden) close();
-    });
-
-    // Keep focus inside the dialog while open.
-    modal.addEventListener('keydown', function (e) {
-      if (e.key !== 'Tab' || modal.hidden) return;
-      var focusable = dialog.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])');
-      if (!focusable.length) return;
-      var first = focusable[0];
-      var last = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
+  function initStoryToggle() {
+    var btn = document.querySelector('.story-toggle');
+    var panel = document.getElementById('story-buddy');
+    if (!btn || !panel) return;
+    panel.classList.add('is-collapsed'); // collapse only once JS is present (no-JS shows full text)
+    btn.addEventListener('click', function () {
+      var open = panel.classList.toggle('is-collapsed') === false;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.textContent = open ? 'Read less' : 'Read more';
     });
   }
 
@@ -248,8 +213,8 @@
     initScrollHeader();
     highlightToday();
     initReveals();
+    initStoryToggle();
     initScrollTop();
-    initStoryModal();
     updateFooterYear();
     cleanupServiceWorker();
   }

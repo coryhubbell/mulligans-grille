@@ -42,7 +42,7 @@
 </script>
 
 <title>Mulligan's Grille — Wings, Burgers & Cold Beer in Port Orange, FL</title>
-<meta name="description" content="Mulligan's Grille is Port Orange's golf-and-grill — scratch-made sauces, hand-cut steaks, the Hole-In-One Burger, the Courtyard and Bar, live music. Under new ownership: Tracy & Bobby Parks. 3830 S Nova Rd.">
+<meta name="description" content="Mulligan's Grille is Port Orange's golf-and-grill — scratch-made sauces, the Hole-In-One Burger, the Courtyard and Bar, live music. Under new ownership: Tracy & Bobby Parks. 3830 S Nova Rd.">
 <meta name="keywords" content="Mulligan's Grille, Port Orange restaurant, sports bar Port Orange, wings Port Orange, burgers Port Orange, Nova Road restaurant, Daytona Beach restaurant, live music Port Orange">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://mulligans-grille.com/">
@@ -95,7 +95,7 @@
 @font-face{font-family:'Sacramento';font-style:normal;font-weight:400;font-display:swap;src:url('/assets/fonts/sacramento-latin.woff2') format('woff2')}
 :root{--bg:#ffffff;--bg-elevated:#f6f3ea;--bg-soft:#ecf2ec;--bg-dark:#0e1a10;--bg-darker:#061008;--text:#1a1a1a;--text-on-dark:#f5f5f0;--text-muted:#5a5a5a;--text-muted-on-dark:#b8bcb0;--green:#3FB54A;--green-deep:#1C6F36;--green-neon:#2BE863;--ink:#0a0a0a;--border:rgba(28,111,54,0.16);--font-script:"Sacramento","Brush Script MT",cursive;--font-display:"Oswald",Impact,"Arial Narrow Bold",sans-serif;--font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--text-xs:0.8125rem;--text-sm:0.9375rem;--text-base:1.0625rem;--container:1200px;--gutter:clamp(1.25rem,4vw,2.5rem);--ease-out:cubic-bezier(0.16,1,0.3,1);--logo-h:72px;--logo-h-mobile:52px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body{font-family:var(--font-body);font-size:var(--text-base);line-height:1.65;color:var(--text);background:var(--bg);overflow-x:hidden}
 img{max-width:100%;height:auto;display:block}
 picture{display:contents}
@@ -117,10 +117,12 @@ button{font:inherit;cursor:pointer}
 .z1-phone-icon{display:inline-flex;line-height:1}
 .z1-phone-icon svg{width:1.05em;height:1.05em;display:block;fill:currentColor}
 .z1-mobile-toggle{display:none}
-.z1-mobile-toggle .z1-x{display:none;width:26px;height:26px}
+.z1-mobile-toggle .z1-x{display:none;width:26px;height:26px;background:transparent}
 .z1-mobile-toggle .z1-x svg{width:100%;height:100%;display:block;fill:var(--ink)}
 .z1-header.is-nav-open .z1-mobile-toggle span{display:none}
-.z1-header.is-nav-open .z1-mobile-toggle .z1-x{display:block}
+.z1-header.is-nav-open .z1-mobile-toggle{position:relative;z-index:101;width:44px;height:44px;padding:0;flex-direction:row;align-items:center;justify-content:center;border-radius:50%;background:var(--green-deep)}
+.z1-header.is-nav-open .z1-mobile-toggle .z1-x{display:block;width:22px;height:22px}
+.z1-header.is-nav-open .z1-mobile-toggle .z1-x svg{fill:#fff}
 @media (max-width:1024px){.z1-mobile-toggle{display:flex;flex-direction:column;gap:5px;background:transparent;border:none;padding:8px}.z1-mobile-toggle span{display:block;width:26px;height:2px;background:var(--ink);border-radius:999px}.z1-logo img{height:var(--logo-h-mobile)}}
 @media (max-width:720px){.z1-phone-cta{padding:0.5rem;width:40px;height:40px;justify-content:center;border-radius:50%}.z1-phone-icon svg{width:1.15rem;height:1.15rem}.z1-phone-text{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}
 .hero{position:relative;padding-block:9rem 3rem;display:flex;align-items:center;background:var(--bg-darker);overflow:hidden;isolation:isolate;min-height:60vh}
@@ -196,7 +198,7 @@ button{font:inherit;cursor:pointer}
       "@id": "https://mulligans-grille.com/#restaurant",
       "name": "Mulligan's Grille",
       "alternateName": "Mulligan's",
-      "description": "Port Orange's golf-themed neighborhood sports bar and grill. Scratch-made wings, hand-cut steaks, signature burgers, full bar, live music in the Courtyard and Bar. Under new ownership: Tracy & Bobby Parks.",
+      "description": "Port Orange's golf-themed neighborhood sports bar and grill. Scratch-made wings, signature burgers, full bar, live music in the Courtyard and Bar. Under new ownership: Tracy & Bobby Parks.",
       "image": { "@id": "https://mulligans-grille.com/#primaryimage" },
       "logo": "https://mulligans-grille.com/assets/images/logo-wordmark.png",
       "url": "https://mulligans-grille.com/",
@@ -232,8 +234,9 @@ button{font:inherit;cursor:pointer}
         "sameAs": "https://en.wikipedia.org/wiki/Volusia_County,_Florida"
       },
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday"], "opens": "15:00", "closes": "22:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "11:00", "closes": "22:00" }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday"], "opens": "15:00", "closes": "21:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Sunday"], "opens": "11:00", "closes": "21:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "11:00", "closes": "22:00" }
       ],
       "sameAs": [
         "https://www.facebook.com/profile.php?id=61588425839792"
@@ -248,8 +251,7 @@ button{font:inherit;cursor:pointer}
         { "@id": "https://mulligans-grille.com/#service-dinein" },
         { "@id": "https://mulligans-grille.com/#service-takeout" },
         { "@id": "https://mulligans-grille.com/#service-bar" },
-        { "@id": "https://mulligans-grille.com/#service-livemusic" },
-        { "@id": "https://mulligans-grille.com/#service-karaoke" }
+        { "@id": "https://mulligans-grille.com/#service-livemusic" }
       ]
     },
     {
@@ -320,7 +322,6 @@ button{font:inherit;cursor:pointer}
         { "@id": "https://mulligans-grille.com/#term-grill" },
         { "@id": "https://mulligans-grille.com/#term-burger" },
         { "@id": "https://mulligans-grille.com/#term-wings" },
-        { "@id": "https://mulligans-grille.com/#term-karaoke" },
         { "@id": "https://mulligans-grille.com/#term-livemusic" },
         { "@id": "https://mulligans-grille.com/#term-portorange" },
         { "@id": "https://mulligans-grille.com/#term-daytona" }
@@ -389,19 +390,6 @@ button{font:inherit;cursor:pointer}
         "https://www.wikidata.org/wiki/Q872711",
         "https://dbpedia.org/page/Buffalo_wing",
         "http://www.productontology.org/doc/Buffalo_wing"
-      ]
-    },
-    {
-      "@type": "DefinedTerm",
-      "@id": "https://mulligans-grille.com/#term-karaoke",
-      "name": "Karaoke",
-      "description": "Interactive entertainment where guests sing to recorded backing tracks — Mulligan's runs karaoke Friday and Saturday nights.",
-      "inDefinedTermSet": { "@id": "https://mulligans-grille.com/#glossary" },
-      "sameAs": [
-        "https://en.wikipedia.org/wiki/Karaoke",
-        "https://www.wikidata.org/wiki/Q170978",
-        "https://dbpedia.org/page/Karaoke",
-        "http://www.productontology.org/doc/Karaoke"
       ]
     },
     {
@@ -481,15 +469,6 @@ button{font:inherit;cursor:pointer}
       "subjectOf": { "@id": "https://mulligans-grille.com/#term-livemusic" }
     },
     {
-      "@type": "Service",
-      "@id": "https://mulligans-grille.com/#service-karaoke",
-      "name": "Karaoke nights",
-      "description": "Karaoke Friday and Saturday nights starting at 8 PM.",
-      "serviceType": "Karaoke",
-      "provider": { "@id": "https://mulligans-grille.com/#restaurant" },
-      "subjectOf": { "@id": "https://mulligans-grille.com/#term-karaoke" }
-    },
-    {
       "@type": "FAQPage",
       "@id": "https://mulligans-grille.com/#faq",
       "mainEntity": [
@@ -506,7 +485,7 @@ button{font:inherit;cursor:pointer}
           "name": "What are Mulligan's Grille hours?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Monday 3:00 PM to 10:00 PM; Tuesday through Sunday 11:00 AM to 10:00 PM."
+            "text": "Monday 3:00 PM to 9:00 PM; Tuesday through Thursday and Sunday 11:00 AM to 9:00 PM; Friday and Saturday 11:00 AM to 10:00 PM."
           }
         },
         {
@@ -522,7 +501,7 @@ button{font:inherit;cursor:pointer}
           "name": "Does Mulligan's Grille have live music?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes — the Bobby Friss Band is a regular and we host rotating performers throughout the week. Karaoke runs Friday and Saturday nights at 8 PM."
+            "text": "Yes — the Bobby Friss Band is a regular and we host rotating performers throughout the week."
           }
         },
         {
@@ -550,7 +529,7 @@ button{font:inherit;cursor:pointer}
 <header class="z1-header" id="site-header" data-zone="Z1-header">
   <div class="z1-inner">
     <a href="#top" class="z1-logo" aria-label="Mulligan's Grille home">
-      <img src="/assets/images/logo-web.png" alt="Mulligan's Grille" width="1033" height="250">
+      <img src="/assets/images/logo-horizontal-ball.png" alt="Mulligan's Grille" width="2385" height="644">
     </a>
     <nav id="primary-nav" class="z1-nav" aria-label="Primary">
       <ul>
@@ -582,12 +561,12 @@ button{font:inherit;cursor:pointer}
   <div class="hero-inner">
     <div class="hero-copy">
       <p class="hero-eyebrow">
-        <span class="hero-eyebrow-line">Mulligan&rsquo;s Grille · Port Orange · Florida</span>
+        <span class="hero-eyebrow-line">Mulligan&rsquo;s Grille<span class="hero-eyebrow-sep"> · </span><span class="hero-eyebrow-loc">Port Orange · Florida</span></span>
         <span class="hero-eyebrow-line hero-eyebrow-sub">Under new ownership 2026</span>
       </p>
       <h1 id="hero-heading" class="script">Take a Mulligan.</h1>
       <p class="hero-tagline">Wings · Burgers · Cold Beer</p>
-      <p class="hero-sub">A neighborhood golf-and-grill on Nova Road. Hand-cut steaks, scratch-made sauces, the Hole-In-One Burger, and the Courtyard and Bar — a do-over whenever you need one.</p>
+      <p class="hero-sub">A neighborhood golf-and-grill on Nova Road. Scratch-made sauces, the Hole-In-One Burger, and the Courtyard and Bar — a do-over whenever you need one.</p>
       <div class="hero-actions">
         <a href="#menu" class="btn btn-on-dark">View the Menu</a>
         <a href="https://www.google.com/maps/dir/?api=1&destination=3830+S+Nova+Rd+Ste+B1+Port+Orange+FL+32127" target="_blank" rel="noopener" class="btn btn-ghost-on-dark">Get Directions</a>
@@ -608,7 +587,7 @@ button{font:inherit;cursor:pointer}
           <source src="/assets/video/hero-reopening.mp4" type="video/mp4">
         </video>
       </div>
-      <figcaption class="hero-video-caption">Grand reopening · May 2026</figcaption>
+      <figcaption class="hero-video-caption">Now open on Nova Road</figcaption>
     </figure>
   </div>
 </section>
@@ -624,10 +603,9 @@ button{font:inherit;cursor:pointer}
       <strong>sports bar and grill</strong> in
       <strong>Port Orange, Florida</strong> — serving
       <a href="#menu">scratch-made wings</a>,
-      <a href="#menu">hand-cut steaks</a>,
       <a href="#menu">signature burgers</a>, and
       <a href="#menu">craft cocktails</a> from a full bar, with
-      <a href="#events">live music</a>, karaoke, and game-day TVs in the
+      <a href="#events">live music</a> and game-day TVs in the
       Courtyard and Bar.
       <a href="#visit">Open Mon&ndash;Sun</a> at
       <a href="https://www.google.com/maps/dir/?api=1&destination=3830+S+Nova+Rd+Ste+B1+Port+Orange+FL+32127" target="_blank" rel="noopener">3830 S Nova Rd, Ste B1, Port Orange, FL 32127</a>.
@@ -639,58 +617,53 @@ button{font:inherit;cursor:pointer}
 <section class="story" id="story" aria-labelledby="story-heading" data-zone="Z4-story">
   <div class="story-inner">
     <picture>
-      <source srcset="/assets/images/mascot-boy-wave.webp" type="image/webp">
-      <img class="story-mascot" src="/assets/images/mascot-boy-wave.png" alt="" aria-hidden="true" width="212" height="247" loading="lazy" decoding="async">
+      <source srcset="/assets/images/story-golf-couple.webp" type="image/webp">
+      <img class="story-mascot" src="/assets/images/story-golf-couple.png" alt="" aria-hidden="true" width="397" height="288" loading="lazy" decoding="async">
     </picture>
-    <p class="eyebrow">Our Story</p>
+    <p class="eyebrow">The History</p>
     <h2 id="story-heading" class="script">How did this Mulligan thing start?</h2>
 
-    <p>You might think it started in Ireland — it&rsquo;s an Irish name, after all. Nope. The mulligan started on a golf course, the do-over you take when the first shot didn&rsquo;t go your way.</p>
+    <p>So you might be thinking the Mulligan started in Ireland since it&rsquo;s an Irish name, but that doesn&rsquo;t appear to be the case. There are two popular theories, but it doesn&rsquo;t seem like the term became commonplace until several decades after the golfers named Mulligan played the game.</p>
 
-    <p>One story: a Canadian golfer named <strong>David Mulligan</strong> at the Country Club of Montreal in the 1920s — jumpy on the first tee, hit a poor shot, re-teed, called the second one a &ldquo;correction shot.&rdquo; The other story: <strong>John &ldquo;Buddy&rdquo; Mulligan</strong>, a locker-room attendant at Essex Fells Country Club in New Jersey in the 1930s, who&rsquo;d play after his shift and figured he&rsquo;d earned an extra shot. The members started doing it too, and the name stuck.</p>
+    <p>One was a Canadian golfer named <strong>David Mulligan</strong>, who played at the Country Club of Montreal back in the 1920s. Legend has it that David Mulligan, who was a bit jumpy or nervous on the first tee, hit a poor tee shot, re-teed, and hit another, calling the second one a &ldquo;correction shot.&rdquo; He eventually brought the concept to the storied Winged Foot Golf Club in Mamaroneck, N.Y.</p>
 
-    <p>That&rsquo;s the spirit of this place. Pull up a chair, take your second shot at a good night, and order the burger.</p>
+    <button type="button" class="story-toggle" aria-expanded="false" aria-controls="story-buddy">Read more</button>
 
-    <div class="story-cta">
-      <button type="button" class="btn btn-ghost" data-story-open aria-haspopup="dialog" aria-controls="story-modal">Read the full story</button>
-    </div>
+    <p id="story-buddy" class="story-collapsible">Another theory has this practice named after <strong>John &ldquo;Buddy&rdquo; Mulligan</strong>, who was a locker room attendant at Essex Fells Country Club in New Jersey back in the 1930s. The story goes that after he would finish cleaning the locker room, he would play a round with the assistant pro and a member or two. Because they were able to practice before their round, and he wasn&rsquo;t, he believed he was entitled to an extra shot if he needed it when the round began. He would tell the members about his privilege, and the members started putting the practice in play as well, referring to the do-over as a Mulligan.</p>
+
+    <p class="story-pullquote">That&rsquo;s the spirit of this place. Pull up a chair, take your second shot at a good night, and order the burger.</p>
   </div>
 </section>
 
-<!-- ═══ Story modal — full history, scrollable lightbox ════════ -->
-<div class="story-modal" id="story-modal" hidden>
-  <div class="story-modal__backdrop" data-story-close></div>
-  <div class="story-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="story-modal-heading">
-    <button type="button" class="story-modal__close" data-story-close aria-label="Close">&times;</button>
-    <div class="story-modal__scroll">
-      <h2 id="story-modal-heading" class="script">How did this Mulligan thing start?</h2>
-      <p>So you might be thinking the Mulligan started in Ireland since it&rsquo;s an Irish name, but that doesn&rsquo;t appear to be the case. There are two popular theories, but it doesn&rsquo;t seem like the term became commonplace until several decades after the golfers named Mulligan played the game.</p>
-      <p>One was a Canadian golfer named <strong>David Mulligan</strong>, who played at the Country Club of Montreal back in the 1920s. Legend has it that David Mulligan, who was a bit jumpy or nervous on the first tee, hit a poor tee shot, re-teed, and hit another, calling the second one a &ldquo;correction shot.&rdquo; He eventually brought the concept to the storied Winged Foot Golf Club in Mamaroneck, N.Y.</p>
-      <p>Another theory has this practice named after <strong>John &ldquo;Buddy&rdquo; Mulligan</strong>, who was a locker room attendant at Essex Fells Country Club in New Jersey back in the 1930s. The story goes that after he would finish cleaning the locker room, he would play a round with the assistant pro and a member or two. Because they were able to practice before their round, and he wasn&rsquo;t, he believed he was entitled to an extra shot if he needed it when the round began. He would tell the members about his privilege, and the members started putting the practice in play as well, referring to the do-over as a Mulligan.</p>
-    </div>
-  </div>
-</div>
-
 <!-- ═══ About ══════════════════════════════════════════════════ -->
 <section class="about" id="about" aria-labelledby="about-heading" data-zone="Z5-about">
+  <div class="about-head reveal">
+    <p class="eyebrow">About</p>
+    <h2 id="about-heading">A neighborhood grill, the way it should be.</h2>
+  </div>
   <div class="about-grid">
-    <div>
-      <p class="eyebrow">About</p>
-      <h2 id="about-heading">A neighborhood grill, the way it should be.</h2>
+    <div class="about-intro">
+      <figure class="about-photo reveal">
+        <picture>
+          <source srcset="/assets/images/owners-tracy-bobby-parks.webp" type="image/webp">
+          <img src="/assets/images/owners-tracy-bobby-parks.jpg" alt="Mulligan's Grille owners Tracy and Bobby Parks in the courtyard" width="1052" height="751" loading="lazy" decoding="async">
+        </picture>
+      </figure>
       <span class="about-new-owners" aria-label="Under new ownership">
         New owners: Tracy &amp; Bobby Parks
       </span>
     </div>
     <div class="about-body reveal">
-      <p>Mulligan&rsquo;s has been a Port Orange fixture for years — the kind of place where the regulars have a seat and the first-timers leave like regulars. We keep it simple: amazing wings made the way you like them, award-winning burgers, hand-cut steaks, and the Hole-In-One Burger that has its own fan club.</p>
+      <p>Mulligan&rsquo;s has been a Port Orange fixture for years — the kind of place where the regulars have a seat and the first-timers leave like regulars. We keep it simple: amazing wings made the way you like them, award-winning burgers, and the Hole-In-One Burger that has its own fan club.</p>
       <p>Our <strong>sauces, dressings, and signature dishes are made from scratch</strong> in the kitchen. Pull up a stool at the bar, grab a booth with the family, or settle into the <strong>Courtyard and Bar</strong> — there&rsquo;s room for whatever kind of night you&rsquo;re having.</p>
+      <p class="about-signoff">&ldquo;Come by and take a Mulligan!&rdquo;<br><span class="script">~ Bobby &amp; Tracy</span></p>
     </div>
   </div>
 
   <div class="about-stats reveal">
     <div class="about-stat">
       <div class="about-stat-headline">Open 7 days</div>
-      <div class="about-stat-sub">Lunch · Dinner · Late</div>
+      <div class="about-stat-sub">Lunch · Dinner</div>
     </div>
     <div class="about-stat">
       <div class="about-stat-headline">Scratch kitchen</div>
@@ -707,8 +680,8 @@ button{font:inherit;cursor:pointer}
 <section class="menu" id="menu" aria-labelledby="menu-heading" data-zone="Z6-menu">
   <div class="menu-head reveal">
     <picture>
-      <source srcset="/assets/images/mascot-girl-wave.webp" type="image/webp">
-      <img class="menu-mascot" src="/assets/images/mascot-girl-wave.png" alt="" aria-hidden="true" width="206" height="254" loading="lazy" decoding="async">
+      <source srcset="/assets/images/menu-golf-couple.webp" type="image/webp">
+      <img class="menu-mascot" src="/assets/images/menu-golf-couple.png" alt="" aria-hidden="true" width="403" height="341" loading="lazy" decoding="async">
     </picture>
     <p class="eyebrow">What&rsquo;s good</p>
     <h2 id="menu-heading"><span class="script">A menu</span> built around what people actually order.</h2>
@@ -889,7 +862,7 @@ button{font:inherit;cursor:pointer}
 <section class="vip" id="vip" aria-labelledby="vip-heading" data-zone="Z8-vip">
   <div class="vip-card reveal">
     <div class="vip-head">
-      <img class="vip-mark" src="/assets/images/logo-neon.png" alt="" aria-hidden="true" width="1254" height="1254" loading="lazy" decoding="async">
+      <img class="vip-mark" src="/assets/images/logo-ball.png" alt="" aria-hidden="true" width="800" height="770" loading="lazy" decoding="async">
 
       <div class="vip-body">
         <p class="vip-badge">VIP LIST</p>
@@ -945,13 +918,6 @@ button{font:inherit;cursor:pointer}
     </article>
 
     <article class="event-card reveal">
-      <span class="event-icon" aria-hidden="true">🎤</span>
-      <h3>Karaoke</h3>
-      <p>Friday and Saturday nights starting at 8 PM. Bring your A-game.</p>
-      <span class="event-tag">Fri &amp; Sat 8 PM</span>
-    </article>
-
-    <article class="event-card reveal">
       <span class="event-icon" aria-hidden="true">🏈</span>
       <h3>Game Day</h3>
       <p>Every TV, every game. NFL Sundays, college Saturdays, Pats fans welcome.</p>
@@ -960,21 +926,25 @@ button{font:inherit;cursor:pointer}
   </div>
 
   <div class="events-cta reveal">
-    <a href="https://www.facebook.com/profile.php?id=61588425839792" target="_blank" rel="noopener" class="btn btn-on-dark">Follow on Facebook for this week&rsquo;s lineup</a>
+    <a href="https://www.facebook.com/profile.php?id=61588425839792" target="_blank" rel="noopener" class="btn btn-on-dark">Follow us on Facebook for updates</a>
   </div>
 </section>
 
 <!-- ═══ Hours & Location ═══════════════════════════════════════ -->
 <section class="location" id="visit" aria-labelledby="visit-heading" data-zone="Z8c-location">
+  <div class="location-head reveal">
+    <p class="eyebrow">Find us</p>
+    <h2 id="visit-heading">Pull up a chair.</h2>
+  </div>
+
   <div class="location-grid">
     <div class="location-info reveal">
-      <p class="eyebrow">Find us</p>
-      <h2 id="visit-heading">Pull up a chair.</h2>
-
       <address class="location-address">
-        <strong>Mulligan&rsquo;s Grille</strong>
-        3830 S Nova Rd, Ste B1<br>
-        Port Orange, FL 32127
+        <a href="https://maps.app.goo.gl/4bSGbVwUCHahNw47A" target="_blank" rel="noopener" class="location-address-link">
+          <strong>Mulligan&rsquo;s Grille</strong>
+          3830 S Nova Rd, Ste B1<br>
+          Port Orange, FL 32127
+        </a>
         <span class="courtyard">Bar + dining room + the Courtyard and Bar out back.</span>
       </address>
 
@@ -982,13 +952,13 @@ button{font:inherit;cursor:pointer}
 
       <table class="hours-table" aria-label="Hours of operation">
         <tbody>
-          <tr data-day="1"><th scope="row">Monday</th><td>3:00 PM – 10:00 PM</td></tr>
-          <tr data-day="2"><th scope="row">Tuesday</th><td>11:00 AM – 10:00 PM</td></tr>
-          <tr data-day="3"><th scope="row">Wednesday</th><td>11:00 AM – 10:00 PM</td></tr>
-          <tr data-day="4"><th scope="row">Thursday</th><td>11:00 AM – 10:00 PM</td></tr>
+          <tr data-day="1"><th scope="row">Monday</th><td>3:00 PM – 9:00 PM</td></tr>
+          <tr data-day="2"><th scope="row">Tuesday</th><td>11:00 AM – 9:00 PM</td></tr>
+          <tr data-day="3"><th scope="row">Wednesday</th><td>11:00 AM – 9:00 PM</td></tr>
+          <tr data-day="4"><th scope="row">Thursday</th><td>11:00 AM – 9:00 PM</td></tr>
           <tr data-day="5"><th scope="row">Friday</th><td>11:00 AM – 10:00 PM</td></tr>
           <tr data-day="6"><th scope="row">Saturday</th><td>11:00 AM – 10:00 PM</td></tr>
-          <tr data-day="0"><th scope="row">Sunday</th><td>11:00 AM – 10:00 PM</td></tr>
+          <tr data-day="0"><th scope="row">Sunday</th><td>11:00 AM – 9:00 PM</td></tr>
         </tbody>
       </table>
 
@@ -998,13 +968,22 @@ button{font:inherit;cursor:pointer}
       </div>
     </div>
 
-    <div class="location-map reveal">
-      <iframe
-        title="Map to Mulligan's Grille at 3830 S Nova Rd, Port Orange, FL"
-        src="https://www.google.com/maps?q=3830+S+Nova+Rd+Ste+B1+Port+Orange+FL+32127&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen></iframe>
+    <div class="location-visuals reveal">
+      <figure class="location-photo">
+        <picture>
+          <source srcset="/assets/images/mulligans-grille-exterior.webp" type="image/webp">
+          <img src="/assets/images/mulligans-grille-exterior.jpg" alt="Exterior of Mulligan's Grille — yellow-and-green storefront sign at 3830 S Nova Rd, Port Orange" width="1200" height="1012" loading="lazy" decoding="async">
+        </picture>
+      </figure>
+
+      <div class="location-map">
+        <iframe
+          title="Map to Mulligan's Grille at 3830 S Nova Rd, Port Orange, FL"
+          src="https://www.google.com/maps?q=Mulligan%27s+Grille,+3830+S+Nova+Rd,+Port+Orange,+FL+32127&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </section>
